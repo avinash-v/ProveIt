@@ -1,0 +1,36 @@
+Installing Flask and structure of folder
+
+pip install virtualenv
+mkdir myproject
+cd myproject
+virtualenv flask
+flask\Script\pip install flask
+mkdir app
+cd app
+mkdir static
+mkdir templates
+cd myproject\flask\Script
+activate
+cd myproject\app
+
+---------------------------------------------------------------------------------
+Install Visual Studio 2015 with Desktop C++ version
+---------------------------------------------------------------------------------
+Make sure you create myproject inside xampp/htdocs
+
+1) Download the folder my project from github
+2) Install flask in myproject like given above
+3) All html files in templates folder
+4) Go to templates folder and run the following command
+pip install wheel
+pip install mysqlclient-1.3.8-cp36-cp36m-win_amd64.whl
+pip install flask-mysqldb
+5) cd myproject\app
+6) Start Xampp
+7) Create a database named login_data
+8) Create a table called user
+9) Create attributes user, password and email
+10) Go to myproject\app
+11) Run python proveit.py
+
+
