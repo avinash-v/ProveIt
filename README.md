@@ -2,10 +2,10 @@ Project Details:
 Research sharing website, where users can register their groups, communicate with team members, and request to join groups.
 
 Directory structure:
-* Project : Contains the package for the application , along with the webpages and python files. 
-* app : Contains the main flask py file, as well as all tentative templates for webpages
+* Project : Contains the package, virtual environment for the application , along with the webpages and python files(server code). 
+* app : Contains the main(? - test version) flask py file, as well as all tentative templates for webpages
 * README.md : This file
-* Project.sln : unknown
+* Project.sln : Project file, with all variables set-up(For VS2017 use)
 
 Documentation Tasks Pending:
 * Need to fill in exact software requirements
@@ -33,14 +33,15 @@ Webpage Tasks completed:
 
 Software requirements:
 * Visual Studio 15 with C++
-* Python2
-* Flask
+* python3
+* Flask(and its extensions)
+* SQLAlchemy
 * flask-mysqldbpip
 * virtualenv
-* XAMPP
+* XAMPP (Or a local server software)
 * wheel
 
-Running instructions:
+Running instructions: (For App folder test run only)
 * //in htdocs
 * mkdir project
 * cd project
