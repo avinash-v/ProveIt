@@ -3,7 +3,12 @@ This script runs the Project application using a development server.
 """
 
 from os import environ
-from Project import app
+from Project import app, db
+from Project.models import User
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db':db,'User':User}
 
 if __name__ == '__main__':
     HOST = environ.get('SERVER_HOST', 'localhost')

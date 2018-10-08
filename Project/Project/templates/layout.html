@@ -35,9 +35,19 @@
                         <i class="search link icon"></i>
                     </div>
                 </div>
+                {% if current_user.is_anonymous %}
                 <a class="ui item" href="{{ url_for('login') }}">
                     LogIn
                 </a>
+                {% else %}
+                <p class="item">Welcome, {{current_user.username}}!</p>
+                <a class="ui item" href="{{ url_for('userbase') }}">
+                    MyAccount
+                </a>
+                <a class="ui item" href="{{ url_for('logout') }}">
+                    LogOut
+                </a>
+                {% endif %}
             </div>
         </div>
         
@@ -45,6 +55,15 @@
     <div class="container body-content">
         {% block content %}{% endblock %}
         <hr />
+        {% with messages = get_flashed_messages() %}
+        {%if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+        {%  endif %}
+        {% endwith %}
         <footer>
             <p>&copy; {{ year }} - My Flask Application</p>
         </footer>
