@@ -3,12 +3,63 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, session
 from werkzeug.urls import url_parse
 from Project import app, db
 from Project.others.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from Project.models import User
+from flask_oauth import OAuth
+
+#Google Oauth credentials
+GOOGLE_CLIENT_ID = '215508935254-1h7h7m0uu0bv79e1j5io7dun0do1pktu.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET = 'LO0zUYsNyKv8CycagUyOHN43'
+REDIRECT_URI = '/oauth2callback'
+
+oauth = OAuth()
+
+google = oauth.remote_app('google',
+                          base_url='https://www.google.com/accounts/',
+                          authorize_url='https://accounts.google.com/o/oauth2/auth',
+                          request_token_url=None,
+                          request_token_params={'scope': 'https://www.googleapis.com/auth/userinfo.email',
+                                                'response_type': 'code'},
+                          access_token_url='https://accounts.google.com/o/oauth2/token',
+                          access_token_method='POST',
+                          access_token_params={'grant_type': 'authorization_code'},
+                          consumer_key=GOOGLE_CLIENT_ID,
+                          consumer_secret=GOOGLE_CLIENT_SECRET)
+
+
+@app.route('/test')  #temp google sign in
+def index():
+    access_token = session.get('access_token')
+    if access_token is None:
+        return redirect(url_for('login_g'))
+
+    access_token = access_token[0]
+    from urllib.request import Request, urlopen, URLError
+
+    headers = {'Authorization': 'OAuth ' + access_token}
+    req = Request('https://www.googleapis.com/oauth2/v1/userinfo',
+                  None, headers)
+    try:
+        res = urlopen(req)
+    except URLError as e:
+        if e.code == 401:
+            # Unauthorized - bad token
+            session.pop('access_token', None)
+            return redirect(url_for('login_g'))
+        return res.read()
+
+    return res.read()
+
+
+@app.route('/login_g')
+def login_g():
+    callback = url_for('authorized', _external=True)
+    return google.authorize(callback=callback)
+
 
 @app.route('/')
 @app.route('/home')
@@ -115,3 +166,15 @@ def extra():
         year = datetime.now().year,
         message = 'alternate home'
         )
+
+@app.route(REDIRECT_URI)
+@google.authorized_handler
+def authorized(resp):
+    access_token = resp['access_token']
+    session['access_token'] = access_token, ''
+    return redirect(url_for('index'))
+
+
+@google.tokengetter
+def get_access_token():
+    return session.get('access_token')
