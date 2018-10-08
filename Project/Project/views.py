@@ -45,3 +45,13 @@ def login():
         year = datetime.now().year,
         message = 'Your Login Page'
         )
+
+@app.route('/signup')
+def signup():
+    """Renders the Log In page"""
+    return render_template(
+        'signup.html',
+        title = 'Sign Up',
+        year = datetime.now().year,
+        message = 'Your Sign Up Page'
+        )
