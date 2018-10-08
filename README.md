@@ -2,7 +2,7 @@ Project Details:
 Research sharing website, where users can register their groups, communicate with team members, and request to join groups.
 
 Directory structure:
-* Project : unknown
+* Project : Contains the package for the application , along with the webpages and python files. 
 * app : Contains the main flask py file, as well as all tentative templates for webpages
 * README.md : This file
 * Project.sln : unknown
@@ -23,10 +23,10 @@ Webpage descriptions: (to be revised)
 * About us page: Basic page introducing the team.
 
 Webpage Tasks completed:
-* Entry page: Incomplete. Sample webpage with links to login and sign up present.
-* Login page: SQL querying completed, verification and webpage pending. Sample webpage present.
-* Signup page: SQL querying completed, verification and webpage pending. Sample webpage present.
-* Home page: Group fetching SQL querying completed, verification and webpage pending.
+* Entry page: Webpage with links to login and sign up present.
+* Login page: SQL querying, verification and webpage completed.
+* Signup page: SQL querying, verification and webpage completed.
+* Home page: Group fetching SQL querying and webpage completed, backend pending.
 * Profile Edit page: SQL querying completed, verification and webpage pending.
 * Group page: Pending
 * About us page: Pending
