@@ -55,15 +55,7 @@
     <div class="container body-content">
         {% block content %}{% endblock %}
         <hr />
-        {% with messages = get_flashed_messages() %}
-        {%if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{message}}</li>
-            {% endfor %}
-        </ul>
-        {%  endif %}
-        {% endwith %}
+        
         <footer>
             <p>&copy; {{ year }} - My Flask Application</p>
         </footer>

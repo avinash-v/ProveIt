@@ -28,13 +28,19 @@
 
 
 <div class="ui placeholder segment">
+    {% if current_user.is_anonymous %}
     <div class="ui two column very relaxed stackable grid">
-        <div class="middle aligned column"><a href="{{url_for('login')}}" class="ui primary massive button" >Log In</a></div>
-        <div class="middle aligned column"><a href="#" class="ui primary massive button">Sign Up</a></div>
+        <div class="middle aligned column"><a href="{{url_for('login')}}" class="ui primary massive button">Log In</a></div>
+        <div class="middle aligned column"><a href="{{url_for('signup')}}" class="ui primary massive button">Sign Up</a></div>
     </div>
     <div class="ui vertical divider">
         Or
     </div>
+    {% else %}
+    <div class="ui middle aligned center grid">
+        <h1 class="ui middle aligned center large header"> Welcome!, {{current_user.username}}</h1>
+    </div>
+    {% endif %}
 </div>
 
 

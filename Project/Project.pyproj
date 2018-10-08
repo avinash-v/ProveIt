@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Project\" />
+    <Folder Include="Project\static\img\" />
     <Folder Include="Project\others\" />
     <Folder Include="Project\static\" />
     <Folder Include="Project\static\content\" />
@@ -53,8 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="libman.json" />
+    <Content Include="Project\static\img\header-bg.jpg" />
+    <Content Include="Project\static\img\logo.png" />
     <Content Include="Project\static\semantic-ui\semantic.min.js" />
     <Content Include="Project\templates\login.html" />
+    <Content Include="Project\templates\signup.html" />
     <Content Include="Project\USER.sql" />
     <Content Include="requirements.txt" />
     <Content Include="Project\static\content\bootstrap.css" />

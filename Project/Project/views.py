@@ -5,8 +5,8 @@ Routes and views for the flask application.
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
-from Project import app
-from Project.others.forms import LoginForm
+from Project import app, db
+from Project.others.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from Project.models import User
 
@@ -45,7 +45,7 @@ def login():
     """Renders the Log In page"""
     #If user is already logged in:
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('userbase'))
     #else
     form = LoginForm()
     if form.validate_on_submit():
@@ -83,14 +83,35 @@ def logout():
 @app.route('/user')
 @login_required
 def userbase():
-    redirect('home')
+    return redirect(url_for('home'))
 
-@app.route('/signup')
+@app.route('/signup',methods=['GET','POST'])
 def signup():
-    """Renders the Log In page"""
+    """Renders the Sign Up page"""
+    if current_user.is_authenticated:
+        return redirect(url_for('userbase'))
+
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username = form.username.data,email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, You have successfully joined ProveIt! ')
+        return redirect(url_for('login'))
     return render_template(
         'signup.html',
         title = 'Sign Up',
         year = datetime.now().year,
-        message = 'Your Sign Up Page'
+        message = 'Your Sign Up Page',
+        form = form
+        )
+
+@app.route('/extra')
+def extra():
+    return render_template(
+        'home.html',
+        title = 'Alt Home',
+        year = datetime.now().year,
+        message = 'alternate home'
         )
