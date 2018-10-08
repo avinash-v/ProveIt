@@ -87,4 +87,10 @@ def userbase():
 
 @app.route('/signup')
 def signup():
-    redirect('login')
+    """Renders the Log In page"""
+    return render_template(
+        'signup.html',
+        title = 'Sign Up',
+        year = datetime.now().year,
+        message = 'Your Sign Up Page'
+        )
