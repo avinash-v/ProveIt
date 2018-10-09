@@ -3,65 +3,67 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - SampleFlask</title>
+    <title>{{ title }}</title>
     <!--
 
-    //Bootstrapcommented out, we're using semantic ui :(
+    //Bootstrapcommented out, we're using semantic ui
     -->
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    
 
     <link rel="stylesheet" type="text/css" href="/static/semantic-ui/semantic.min.css" />
     <script src="/static/scripts/jquery-1.10.2.min.js"></script>
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
-    <script src="/static/semantic-ui/semantic.min.js" ></script>
+    <script src="/static/semantic-ui/semantic.min.js"></script>
 </head>
 
 <body>
-        <div class="ui top pointing menu" >
-            <a class="item active" href="{{ url_for('home') }}">
-                Home
-            </a>
-            <a class="item" href="{{ url_for('about') }}">
-                About
-            </a>
-            <a class="item" href="{{ url_for('contact') }}">
-                Contacts
-            </a>
-            <div class="right menu">
-                <div class="item">
-                    <div class="ui icon input">
-                        <input type="text" placeholder="Search...">
-                        <i class="search link icon"></i>
-                    </div>
+    <div class="ui top pointing menu">
+        <a class="item" href="{{ url_for('home') }}">
+            Home
+        </a>
+        <a class="item" href="{{ url_for('about') }}">
+            About
+        </a>
+        <a class="item" href="{{ url_for('contact') }}">
+            Contacts
+        </a>
+        <div class="right menu">
+            <div class="item">
+                <div class="ui icon input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
                 </div>
-                {% if current_user.is_anonymous %}
-                <a class="ui item" href="{{ url_for('login') }}">
-                    LogIn
-                </a>
-                {% else %}
-                <p class="item">Welcome, {{current_user.username}}!</p>
-                <a class="ui item" href="{{ url_for('userbase') }}">
-                    MyAccount
-                </a>
-                <a class="ui item" href="{{ url_for('logout') }}">
-                    LogOut
-                </a>
-                {% endif %}
             </div>
+            {% if current_user.is_anonymous %}
+            <a class="ui item" href="{{ url_for('login') }}">
+                LogIn
+            </a>
+            {% else %}
+            <p class="item">Welcome, {{current_user.username}}!</p>
+            <a class="ui item" href="{{ url_for('userbase') }}">
+                Account
+            </a>
+            <a class="ui item" href="{{ url_for('logout') }}">
+                LogOut
+            </a>
+            {% endif %}
         </div>
-        
+    </div>
+
 
     <div class="container body-content">
         {% block content %}{% endblock %}
         <hr />
-        
+
         <footer>
             <p>&copy; {{ year }} - My Flask Application</p>
         </footer>
     </div>
 
-    <script src="/static/scripts/jquery-1.10.2.js"></script>
+    <script src="/static/scripts/jquery-2.2.4.min.js"></script>
+    <script src="/static/scripts/main.js"></script>
     <script src="/static/scripts/bootstrap.js"></script>
     <script src="/static/scripts/respond.js"></script>
     {% block scripts %}{% endblock %}

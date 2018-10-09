@@ -53,10 +53,12 @@
     <Folder Include="Project\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app.db" />
     <Content Include="libman.json" />
     <Content Include="Project\static\img\header-bg.jpg" />
     <Content Include="Project\static\img\logo.png" />
     <Content Include="Project\static\semantic-ui\semantic.min.js" />
+    <Content Include="Project\templates\home.html" />
     <Content Include="Project\templates\login.html" />
     <Content Include="Project\templates\signup.html" />
     <Content Include="Project\USER.sql" />

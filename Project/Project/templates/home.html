@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Site Title -->
-	<title>Proveit</title>
+    <!-- Site Title -->
+    <title>Proveit</title>
 
-	
-		 
-	<link rel="stylesheet" href="/static/content/linearicons.css">
-	<link rel="stylesheet" href="/static/content/font-awesome.min.css">
-	<link rel="stylesheet" href="/static/content/bootstrap-home.css">
-	<link rel="stylesheet" href="/static/content/main.css">
-	</head>
+
+
+    <link rel="stylesheet" href="/static/content/linearicons.css">
+    <link rel="stylesheet" href="/static/content/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/content/bootstrap-home.css">
+    <link rel="stylesheet" href="/static/content/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/semantic-ui/semantic.min.css" />
+     <script src="/static/semantic-ui/semantic.min.js"></script>
+
+</head>
 	<body>
 		<!-- Start Header Area -->
 		<header class="default-header">
 			<div class="container">
 				<div class="header-wrap">
-					<div class="header-top d-flex justify-content-between align-items-center">
+					<div class="header-top d-flex justify-content-between align-items-center"  style="width:128%; margin-left:-158px;">
 						<div class="logo">
-							<a href="index.html"><img src="/static/img/logo.png" alt=""></a>
+							<a href="{{url_for('home')}}"><img src="/static/img/logo_tmp.png" alt=" height="70""></a>
 						</div>
 						<div class="main-menubar d-flex align-items-center">
-							<nav class="hide">
-								<a href="#">Login</a>
-								<a href="#">SignUp</a>
-							</nav>
+                            <nav class="hide">
+                                <a class="item active" href="{{ url_for('home') }}">
+                                    Home
+                                </a>
+                                <a class="item" href="{{ url_for('about') }}">
+                                    About
+                                </a>
+                                <a class="item" href="{{ url_for('contact') }}">
+                                    Contacts
+                                </a>
+                                {% if current_user.is_anonymous %}
+                                <a class="ui item" href="{{ url_for('login') }}">
+                                    LogIn
+                                </a>
+                                <a class="ui item" href="{{ url_for('signup') }}">
+                                    Join
+                                </a>
+                                {% else %}
+                                <a class="ui item" href="{{ url_for('userbase') }}">
+                                    Account
+                                </a>
+                                <a class="ui item" href="{{ url_for('logout') }}">
+                                    LogOut
+                                </a>
+                                {% endif %}
+                            </nav>
 							<div class="menu-bar"><span class="lnr lnr-menu"></span></div>
 						</div>
 					</div>
@@ -35,14 +60,15 @@
 		<!-- Start Banner Area -->
 		<section class="banner-area relative">
 			<div class="container">
-				<div class="row fullscreen align-items-center justify-content-between" style="height: 735px;">
-					<div class="col-lg-12">
-						<div class="banner-content text-center">
-							<h4 class="text-white text-uppercase">Introducing</h4>
-							<h1 class="text-uppercase">PROVEIT</h1>
-						</div>
-					</div>
-				</div>
+                <div class="row fullscreen align-items-center justify-content-between" style="height: 735px;">
+                    <div class="col-lg-12">
+                        <div class="banner-content text-center">
+                            <h4 class="text-white text-uppercase">Introducing</h4>
+                            <h1 class="text-uppercase">PROVEIT</h1>
+                        </div>
+                    </div>
+
+                </div>
 			</div>
 		</section>
 		<!-- End Banner Area -->

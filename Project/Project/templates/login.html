@@ -1,4 +1,4 @@
-﻿{% extends "login_layout.html" %}
+﻿{% extends "layout.html" %}
 
 {% block content %}
 
@@ -9,7 +9,7 @@
     <h2 class="ui blue large header">Login to your account</h2>
     <form class="ui center aligned large form" action="" style="padding-left: 25%; padding-right: 25%" method="post" novalidate>
         {{form.hidden_tag()}}
-        <div class="ui stacked segment" style="padding: 10%">
+        <div class="ui stacked segment" style="padding: 10%;background: #F8F8F9;">
             <div class="ui field">
                 <!-- <label>Username</label> -->
                 <!--{{ form.username.label }}-->
@@ -44,7 +44,7 @@
             <div class="ui horizontal divider">
                 Or
             </div>
-            <a class="ui large google plus button" style="margin-top: 0%;width: 79%;" href="#">
+            <a class="ui large google plus button" style="margin-top: 0%;width: 79%;" href="{{url_for('index')}}">
                 <i class="google plus icon"></i>
                 Login with Google Plus
             </a>
