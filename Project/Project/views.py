@@ -9,10 +9,10 @@ from Project import app, db
 from Project.others.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from Project.models import User
-#import urllib.parse as urlparse
-#import sys
-#sys.modules["urlparse"] = urlparse
-#sys.modules["urllib"] = urlparse
+import urllib.parse as urlparse
+import sys
+sys.modules["urlparse"] = urlparse
+sys.modules["urllib"] = urlparse
 from flask_oauth import OAuth
 
 #Google Oauth credentials
