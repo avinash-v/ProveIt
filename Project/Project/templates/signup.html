@@ -1,4 +1,4 @@
-{% extends "login_layout.html" %}
+{% extends "layout.html" %}
 
 {% block content %}
 
@@ -8,7 +8,7 @@
     <h2 class="ui blue large header">Sign Up</h2>
     <form class="ui center aligned large form" style="padding-left: 25%; padding-right: 25%" action="" method="post">
         {{ form.hidden_tag() }}
-        <div class="ui stacked segment" style="padding: 10%">
+        <div class="ui stacked segment" style="padding: 10%;background: #F8F8F9;">
             <div class="ui field">
                 <!--<label>Username</label>-->
                 <div class="ui left icon input">
@@ -60,17 +60,12 @@
         <!--<a class="ui large fluid blue submit button" style="margin-bottom: 2%" href="#">Sign Up</a> -->
         <p>{{ form.submit(class_="ui large blue submit button", style="margin-bottom: 3%;margin-top: 3%;width: 79%;display:inline;font-size:1.14285714rem;") }}</p>
         <div>
-            By clicking on <b>Sign Up</b>, you agree to our <a style="color: black; font-weight: bold" href="#">User Agreement</a>, <a style="color: black; font-weight: bold" href="#">Privacy Policy</a> and <a style="color: black; font-weight: bold" href="#">Cookie Policy</a>. 
-        </div> 
-        <div class="ui horizontal divider">
-            Or
+            By clicking on <b>Sign Up</b>, you agree to our <a style="color: black; font-weight: bold" href="#">User Agreement</a>, <a style="color: black; font-weight: bold" href="#">Privacy Policy</a> and <a style="color: black; font-weight: bold" href="#">Cookie Policy</a>.
         </div>
-        <a class="ui large google plus button" style="margin-top:3%; width: 79%" href="#">
-        <i class="google plus icon"></i>
-            Signup with Google Plus
-    </a>
-    </div>
-    <div class="ui message">
+
+
+        </div>
+        <div class="ui message">
         Already with us?
         <a href="{{ url_for('login') }}">Login</a>
      </div>       
