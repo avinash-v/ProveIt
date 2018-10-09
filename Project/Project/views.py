@@ -9,10 +9,8 @@ from Project import app, db
 from Project.others.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
 from Project.models import User
-import urllib.parse as urlparse
-import sys
-sys.modules["urlparse"] = urlparse
-sys.modules["urllib"] = urlparse
+import json
+
 from flask_oauth import OAuth
 
 #Google Oauth credentials
@@ -55,8 +53,25 @@ def index():
             session.pop('access_token', None)
             return redirect(url_for('login_g'))
         return res.read()
+        
 
-    return res.read()
+    #return res.read()
+    dataUser = json.loads(res.read())
+    #return dataUser["name"]
+    
+    user = User.query.filter_by(email=dataUser["email"]).first()
+    if user is None:
+            flash('Invalid User')
+            return redirect(url_for('signup'))
+    
+    login_user(user,remember=True)
+    return redirect(url_for('userbase'))
+
+
+
+
+
+
 
 
 @app.route('/login_g')
