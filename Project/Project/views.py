@@ -85,7 +85,7 @@ def login_g():
 def home():
     """Renders the home page."""
     return render_template(
-        'index.html',
+        'home.html',
         title='Home Page',
         year=datetime.now().year,
     )
@@ -133,7 +133,7 @@ def login():
         #to redirect to correct next page// When coming from login_required pages
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '' :
-            next_page = url_for('home') #else default next page is home
+            next_page = url_for('extra') #else default next page is home
 
         return redirect(next_page)
         pass
@@ -148,12 +148,12 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('extra'))
 
 @app.route('/user')
 @login_required
 def userbase():
-    return redirect(url_for('home'))
+    return redirect(url_for('extra'))
 
 @app.route('/signup',methods=['GET','POST'])
 def signup():
@@ -180,7 +180,7 @@ def signup():
 @app.route('/extra')
 def extra():
     return render_template(
-        'home.html',
+        'index.html',
         title = 'Alt Home',
         year = datetime.now().year,
         message = 'alternate home'
