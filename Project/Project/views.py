@@ -182,3 +182,12 @@ def authorized(resp):
 @google.tokengetter
 def get_access_token():
     return session.get('access_token')
+
+@app.route('/profile')
+def profile():
+    """Renders the home page."""
+    return render_template(
+        'profile.html',
+        title='Profile Page',
+        year=datetime.now().year,
+    )
