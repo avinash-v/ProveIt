@@ -37,7 +37,7 @@
             <!--<label>Password</label>-->
             <div class="ui left icon input">
                 <!--<input type="password" placeholder="Password (6 or more characters)">-->
-                {{form.password(size=32,placeholder="Password(6 or more characters)")}}
+                {{form.password(size=32,placeholder="Password(8 or more characters)")}}
                 <i class="unlock icon"></i>
             </div>
             {% for error in form.password.errors %}
@@ -49,7 +49,7 @@
             <!--<label>Password</label>-->
             <div class="ui left icon input">
                 <!--<input type="password" placeholder="Confirm Password (6 or more characters)">-->
-                {{form.password2(size=32,placeholder="Confirm Password(6 or more characters)")}}
+                {{form.password2(size=32,placeholder="Confirm Password(8 or more characters)")}}
                 <i class="lock icon"></i>
             </div>
             {% for error in form.password2.errors %}
