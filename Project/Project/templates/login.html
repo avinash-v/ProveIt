@@ -34,9 +34,12 @@
                 {%endfor%}
             </div>
 
-                {{form.submit(class_ = "ui large blue submit button",style="margin-bottom: 3%;margin-top: 3%;width: 79%;display:inline;font-size:1.14285714rem;")}}
+            {{form.submit(class_ = "ui large blue submit button",style="margin-bottom: 3%;margin-top: 3%;width: 79%;display:inline;font-size:1.14285714rem;")}}
 
             <p />
+            {% for messages in messages %}
+            <span style="color: red;">[{{ message }}]</span>
+            {% endfor %}
 
             <a style="color:black; font-weight:bold" href="#">
                 Forgot password?

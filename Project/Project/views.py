@@ -133,7 +133,7 @@ def login():
         #to redirect to correct next page// When coming from login_required pages
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '' :
-            next_page = url_for('extra') #else default next page is home
+            next_page = url_for('userbase') #else default next page is home
 
         return redirect(next_page)
         pass
@@ -148,12 +148,17 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('extra'))
+    return redirect(url_for('home'))
 
 @app.route('/user')
 @login_required
 def userbase():
-    return redirect(url_for('extra'))
+    return render_template(
+        "profile.html",
+        title = "Your Account",
+        message = "Your account page",
+        year = datetime.now().year
+        )
 
 @app.route('/signup',methods=['GET','POST'])
 def signup():
