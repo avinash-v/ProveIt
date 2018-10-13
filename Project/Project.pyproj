@@ -31,9 +31,6 @@
     <Compile Include="Project\config.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Project\others\forms.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Project\models.py">
       <SubType>Code</SubType>
     </Compile>
@@ -47,7 +44,6 @@
   <ItemGroup>
     <Folder Include="Project\" />
     <Folder Include="Project\resources\" />
-    <Folder Include="Project\others\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".flaskenv" />
