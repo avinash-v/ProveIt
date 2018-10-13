@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
-import { MainLayoutComponent } from './main-layout/main-layout.component';
 
 import { NbLayoutModule, NbSidebarModule, NbSidebarService } from '@nebular/theme';
+import { PostsComponent } from './posts/posts.component';
+import { MainComponent } from './main.component';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { NbLayoutModule, NbSidebarModule, NbSidebarService } from '@nebular/them
     NbSidebarModule
   ],
   providers: [ NbSidebarService ],
-  declarations: [MainLayoutComponent]
+  declarations: [ MainComponent , PostsComponent]
 })
 export class MainModule { }

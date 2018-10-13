@@ -1,11 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { NbLayoutModule, NbSidebarModule, NbSidebarService } from '@nebular/theme';
+import { PostsComponent } from './posts/posts.component';
+import { MainComponent } from './main.component';
 
 const routes: Routes = [
   {
-    path : '' , component : MainLayoutComponent
+    path : '' , component : MainComponent,
+    children : [
+      {
+        path : 'posts',
+        component : PostsComponent
+      },
+      {
+        path : '',
+        component: PostsComponent
+      }
+    ]
   }
 ];
 
