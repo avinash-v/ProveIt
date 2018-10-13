@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="content">
-                <a class="header">Kristy</a>
+                <a class="header">{{current_user.username}}</a>
                 <div class="meta">
                     <span class="date">Age: 26</span>
                 </div>
@@ -53,10 +53,10 @@
                 </div>
             </div>
             <div class="extra content">
-            <a>
-             <i class="envelope icon"></i>
-                kristy@gmail.com
-            </a>
+                <a>
+                    <i class="envelope icon"></i>
+                    {{current_user.email}}
+                </a>
             </div>
         </div>
         <div class="ui grid" style="padding-right: 10%; margin-top: -80%">
