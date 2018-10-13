@@ -31,69 +31,25 @@
     <Compile Include="Project\config.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Project\others\forms.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Project\models.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Project\resources\endpoints.py" />
+    <Compile Include="Project\resources\login.py" />
+    <Compile Include="Project\resources\signup.py" />
     <Compile Include="runserver.py" />
     <Compile Include="Project\__init__.py" />
     <Compile Include="Project\views.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Project\" />
-    <Folder Include="Project\static\img\" />
-    <Folder Include="Project\others\" />
-    <Folder Include="Project\static\" />
-    <Folder Include="Project\static\content\" />
-    <Folder Include="Project\static\fonts\" />
-    <Folder Include="Project\static\scripts\" />
-    <Folder Include="Project\static\semantic-ui\" />
-    <Folder Include="Project\templates\" />
+    <Folder Include="Project\resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".flaskenv" />
     <Content Include="app.db" />
     <Content Include="libman.json" />
-    <Content Include="Project\static\img\header-bg.jpg" />
-    <Content Include="Project\static\img\kristy.png" />
-    <Content Include="Project\static\img\logo.png" />
-    <Content Include="Project\static\img\logo_tmp.png" />
-    <Content Include="Project\static\img\research1.jpg" />
-    <Content Include="Project\static\img\research2.jpg" />
-    <Content Include="Project\static\semantic-ui\semantic.min.js" />
-    <Content Include="Project\templates\home.html" />
-    <Content Include="Project\templates\login.html" />
-    <Content Include="Project\templates\profile.html" />
-    <Content Include="Project\templates\signup.html" />
-    <Content Include="Project\USER.sql" />
     <Content Include="requirements.txt" />
-    <Content Include="Project\static\content\bootstrap.css" />
-    <Content Include="Project\static\content\bootstrap.min.css" />
-    <Content Include="Project\static\content\site.css" />
-    <Content Include="Project\static\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Project\static\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Project\static\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Project\static\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Project\static\scripts\bootstrap.js" />
-    <Content Include="Project\static\scripts\bootstrap.min.js" />
-    <Content Include="Project\static\scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Project\static\scripts\jquery-1.10.2.js" />
-    <Content Include="Project\static\scripts\jquery-1.10.2.min.js" />
-    <Content Include="Project\static\scripts\jquery-1.10.2.min.map" />
-    <Content Include="Project\static\scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Project\static\scripts\jquery.validate.js" />
-    <Content Include="Project\static\scripts\jquery.validate.min.js" />
-    <Content Include="Project\static\scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Project\static\scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Project\static\scripts\modernizr-2.6.2.js" />
-    <Content Include="Project\static\scripts\respond.js" />
-    <Content Include="Project\static\scripts\respond.min.js" />
-    <Content Include="Project\static\scripts\_references.js" />
-    <Content Include="Project\templates\about.html" />
-    <Content Include="Project\templates\contact.html" />
-    <Content Include="Project\templates\index.html" />
-    <Content Include="Project\templates\layout.html" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
