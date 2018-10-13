@@ -1,4 +1,8 @@
-<p>
-  main-layout works!
-</p>
-<router-outlet name="inner-outlet"></router-outlet>
+<nb-layout>
+  <nb-layout-header fixed>Main Bar</nb-layout-header>
+
+  <nb-sidebar>Sidebar Content</nb-sidebar>
+
+  <nb-layout-column><router-outlet></router-outlet></nb-layout-column>
+</nb-layout>
+
