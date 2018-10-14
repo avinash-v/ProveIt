@@ -8,10 +8,10 @@ from flask_login import login_required
 
 
 
-api.add_resource(Login,"/login",endpoint='task')
-api.add_resource(Logout,'/logout',endpoint ="taskss")
-api.add_resource(SignUp,'/signup',endpoint="signupp")
-api.add_resource(UserProfiles,"/profile/<username>",endpoint="profilee")
-api.add_resource(UserProfiles,"/profile",endpoint="Profile")
-api.add_resource(UserProfiles,"/profile/update",endpoint="Profilee")
-api.add_resource(UserProfiles,"/profile/delete",endpoint="Profileee")
+api.add_resource(Login,"/login",endpoint='login')
+api.add_resource(Logout,'/logout',endpoint ="logout")
+api.add_resource(SignUp,'/signup',endpoint="signup")
+api.add_resource(UserProfiles,"/profile/<username>",endpoint="getprofile")
+api.add_resource(UserProfiles,"/profile",endpoint="addProfile")
+api.add_resource(UserProfiles,"/profile/update",endpoint="updateProfile")
+api.add_resource(UserProfiles,"/profile/delete",endpoint="deleteProfile")

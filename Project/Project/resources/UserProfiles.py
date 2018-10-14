@@ -7,25 +7,29 @@ from Project.models import User
 from werkzeug.urls import url_parse
 from Project.models import UserProfile
 from Project.models import Student
+from flask_cors import CORS,cross_origin
+from flask import jsonify
+headers ={"Content-Type": "application/json"}
 class UserProfiles(Resource):
 	decorators= [login_required]
+	@cross_origin()
 	def get(self,username):
 		if username is None:
-			return {"description" : "The username is NULL"}
+			return jsonify({"description" : "The username is NULL"}),200,headers
 
 		u = User.query.filter_by(username=username).first()
 		u = UserProfile.query.filter_by(id=u.id).first()
 		if u is None:
-			return {"description" : "The username does not exist.Please enter a valid username"}
+			return jsonify({"description" : "The username does not exist.Please enter a valid username"}),200,headers
 
 		if u.userType == "student":
-			return {"description":"The user profile is:","usn":u.collegeId,"first name":u.firstName,"last Name":u.lastName,"contact":u.contact,"bio":u.bio,"interests":u.interests,"cgpa":u.cgpa}
+			return jsonify({"description":"The user profile is:","usn":u.collegeId,"first name":u.firstName,"last Name":u.lastName,"contact":u.contact,"bio":u.bio,"interests":u.interests,"cgpa":u.cgpa}),200,headers
 		if u.userType == "collegeRepresentative":
-			return {"description":"The user profile is:","usn":u.collegeId,"first name":u.firstName,"last Name":u.lastName,"contact":u.contact,"bio":u.bio,"interests":u.interests,"designation":u.designation}
+			return jsonify({"description":"The user profile is:","usn":u.collegeId,"first name":u.firstName,"last Name":u.lastName,"contact":u.contact,"bio":u.bio,"interests":u.interests,"designation":u.designation}),200,headers
 		if u.userType == "faculty":
-			return {"description":"The user profile is:","usn":u.collegeId,"first name":u.firstName,"last Name":u.lastName,"contact":u.contact,"bio":u.bio,"interests":u.interests,"research body":u.researchBody}
+			return jsonify({"description":"The user profile is:","usn":u.collegeId,"first name":u.firstName,"last Name":u.lastName,"contact":u.contact,"bio":u.bio,"interests":u.interests,"research body":u.researchBody}),200,headers
 
-
+	@cross_origin()
 	def post(self):
 		json_data = request.get_json(force=True)
 		try:
@@ -37,14 +41,14 @@ class UserProfiles(Resource):
 		print(Id)
 		print(u.id)
 		if u.id != Id:
-			return "description:'You cannot add someone elses profile'"
+			return jsonify({"description:'You cannot add someone elses profile'"}),200,headers
 		try:
 			collegeId = json_data["collegeId"]
 		except:
 			collegeId = None
 		u = UserProfile.query.filter_by(collegeId = collegeId).first()
 		if u is not None :
-			return "The usn already exists.Please enter a valid usn"
+			return jsonify({"description":"The usn already exists.Please enter a valid usn"}),200,headers
 		try:
 			firstName = json_data["firstName"]
 		except:
@@ -70,8 +74,9 @@ class UserProfiles(Resource):
 
 		db.session.add(student)
 		db.session.commit()
-		return {"description" : "The profile has been added successfully"}
+		return jsonify({"description" : "The profile has been added successfully"}),200,headers
 
+	@cross_origin()
 	def put(self):
 		json_data = request.get_json(force=True)
 		Id = current_user.id
@@ -86,7 +91,7 @@ class UserProfiles(Resource):
 		for i in u1:
 			count +=1
 		if count>1:
-			return "The usn already exists.Please enter a valid usn"
+			return jsonify({"description":"The usn already exists.Please enter a valid usn"}),200,headers
 
 		try:
 			firstName = json_data["firstName"]
@@ -105,7 +110,7 @@ class UserProfiles(Resource):
 		for i in u1:
 			count+=1
 		if count > 1:				
-			return "The contact already exists.PLease add another one"
+			return jsonify({"description":"The contact already exists.PLease add another one"}),200,headers
 		try:
 			bio = json_data["bio"]
 		except:
@@ -122,7 +127,7 @@ class UserProfiles(Resource):
 		u.bio = bio
 		u.interests = interests
 		db.session.commit()
-		return {"description" : "The profile has been updated successfully"}
+		return jsonify({"description" : "The profile has been updated successfully"}),200,headers
 #Working partially need to handle a few cases.
 	def delete(self):
 		Id = current_user.id
@@ -132,7 +137,7 @@ class UserProfiles(Resource):
 
 		db.session.commit()
 		logout_user()
-		return {"description" : "The user has been deleted successfully"}
+		return jsonify({"description" : "The user has been deleted successfully"}),200,headers
 
 
 
