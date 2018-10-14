@@ -51,7 +51,7 @@ class UserProfile(db.Model):
 
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<User {}>'.format(self.firstName)
 
 class CollegeRepresentative(UserProfile):
     designation = db.Column(db.String(512),index=True)

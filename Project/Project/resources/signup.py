@@ -4,6 +4,7 @@ from Project.views import userbase,extra
 from flask import url_for,request
 from Project.models import User
 from werkzeug.urls import url_parse
+from Project import db
 #Added to validate the email
 from validate_email import validate_email
 #Added to check the strength of the password
@@ -13,11 +14,11 @@ class SignUp(Resource):
 	def post(self):
 		if current_user.is_authenticated:
 			return {"description" : "The user is already logged in" , "url" : url_for('userbase')}
-
-		username = request.form["username"]
-		email = request.form["email"]
-		password = request.form["password"]
-		password2 = request.form["password2"]
+		json_data = request.get_json(force=True)
+		username = json_data["username"]
+		email = json_data["email"]
+		password = json_data["password"]
+		password2 = json_data["password2"]
 		if username is None :
 			return {"description" : "The username is empty"}
 		user = User.query.filter_by(username=username).first()
@@ -36,10 +37,10 @@ class SignUp(Resource):
 		if password is None :
 			return {"description" : "The password is empty"}
 		#The following three lines check the strength of the password
-		strength , improvements = passwordmeter.test(password)
-		print(strength)
-		if strength < 0.6 :
-			return {"description" : "The password is too weak","improvements" : improvements}
+		#strength , improvements = passwordmeter.test(password)
+		#print(strength)
+		#if strength < 0.2 :
+		#	return {"description" : "The password is too weak","improvements" : improvements}
 		if len(password) <8 or len(password) > 32 :
 			return {"description" : "The password length must be between 8 and 32 characters"}
 		if password2 != password :
@@ -49,5 +50,5 @@ class SignUp(Resource):
 		db.session.add(user)
 		db.session.commit()
 
-		return {"description" : "You have successfully signed up for Proveit!","url" : url_for("login")}
+		return {"description" : "You have successfully signed up for Proveit!","url" : "WE have to give a url"}
 

@@ -8,9 +8,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_restful import Api
+from flask_cors import CORS
 app = Flask(__name__)
+#To support CORS
+CORS(app, supports_credentials=True)
 api = Api(app)
 app.config.from_object(Config)
+#Config.init_app(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
