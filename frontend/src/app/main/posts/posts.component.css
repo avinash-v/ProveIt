@@ -1,3 +1,49 @@
-.basicRight{
+:host nb-tab {
+  padding: 1rem;
+}
+.basicDetails {
+  height: 20vh;
+}
+.basicRight {
+  position: absolute;
+  left: 25vh;
+  bottom: 20vh;
   display: inline-block;
+  padding-top: 2vh;
+  padding-right: 2vh;
+  padding-left: 2vh;
+  background-color: blue;
+  color: white;
+}
+.basicImg {
+  float: left;
+  position: relative;
+  border-radius: 50%;
+  height: 20vh;
+  width: 20vh;
+  overflow: hidden;
+}
+.profilePicture {
+  opacity: 1;
+  transition: .5s ease;
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+.basicImg:hover .profilePicture {
+  opacity: 0.3;
+}
+.basicImgEdit {
+  transition: 0.5s ease;
+  opacity: 0;
+  border-radius: 10%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.basicImg:hover .basicImgEdit {
+  opacity: 1;
 }

@@ -1,8 +1,13 @@
 <nb-card>
   <nb-card-body>
     <div class="basicDetails">
-      <div class="basicImg"><img src="#" alt="profile picture" align="left" /></div>
-      <div class="basicRight"><span class="basicDetailsText">Name: {{user.name}}</span><p><span class="basicDetailsText">Email: {{user.email}}</span></div>
+      <div class="basicImg">
+        <img class="profilePicture" src="{{user.picture}}" alt="profile picture" align="left" />
+        <div class="basicImgEdit"><button nbButton>Edit</button></div>
+      </div>
+      <nb-card class="basicRight">
+          <b>Name: {{user.name}}<p>Email: {{user.email}}</b>
+      </nb-card>
     </div>
     <nb-tabset>
       <nb-tab tabTitle="Contact Details">
