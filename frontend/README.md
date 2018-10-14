@@ -1,4 +1,4 @@
-#ProveIt Angular Frontend
+# ProveIt Angular Frontend
 
 Clone this repository and run `npm i` to install the dependencies. 
 
@@ -15,7 +15,7 @@ Right now, please make components under the main module by running `cd src/app/m
 
 
 
-# Frontend
+## Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.4.
 
