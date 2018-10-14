@@ -1,8 +1,10 @@
-<nb-card>
-  <nb-card-header><img src="{{postInfo.groupPic}}" alt="postimg" />{{postInfo.group}}</nb-card-header>
-  <nb-card-body>
-    <span class="postTitle">{{postInfo.heading}}</span>
-    <span class="postAuthor">{{postInfo.author}}</span>
+<nb-card class="postFormat">
+  <nb-card-header class="postCard"><img class="groupImg" src="{{postInfo.groupPic}}" alt="postimg" /><span class="postCard">{{postInfo.group}}</span></nb-card-header>
+  <nb-card-body class="postCard">
+    <div class="postTitleBar">
+      <span class="postTitle">{{postInfo.heading}}</span>
+      <span class="postAuthor"><span class="postBy">posted by: </span>{{postInfo.author}}</span>
+    </div>
     <nb-card>
       <nb-card-body>
         {{postInfo.body}}
