@@ -1,7 +1,21 @@
 <nb-layout>
-  <nb-layout-header fixed>Main Bar</nb-layout-header>
+  <nb-layout-header fixed>
+    <a href="#" (click)="toggleSidebar()"><i class="nb-menu" size="big"></i></a>
+    <nb-actions style="margin-left: auto; margin-right: 0;">
+      <nb-action>
+      <nb-user size="large"
+               name="Jonh Doe"
+               title="Engineer"
+               badgeStatus="success"
+               badgePosition="bottom right" [nbContextMenu]="items">
+      </nb-user>
+    </nb-action>
+    </nb-actions>
+  </nb-layout-header>
 
-  <nb-sidebar>Sidebar Content</nb-sidebar>
+  <nb-sidebar>
+    Sidebar Content
+  </nb-sidebar>
 
   <nb-layout-column class="main-content"><router-outlet></router-outlet></nb-layout-column>
 </nb-layout>
