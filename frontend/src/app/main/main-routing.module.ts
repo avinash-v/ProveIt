@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NbLayoutModule, NbSidebarModule, NbSidebarService } from '@nebular/theme';
 import { PostsComponent } from './posts/posts.component';
+import { PostComponent } from './post/post.component';
 import { MainComponent } from './main.component';
 
 const routes: Routes = [
@@ -9,8 +10,8 @@ const routes: Routes = [
     path : '' , component : MainComponent,
     children : [
       {
-        path : 'posts',
-        component : PostsComponent
+        path : 'post',
+        component : PostComponent
       },
       {
         path : '',
