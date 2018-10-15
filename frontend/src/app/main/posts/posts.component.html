@@ -5,19 +5,30 @@
         <img class="profilePicture" src="{{user.picture}}" alt="profile picture" align="left" />
         <div class="basicImgEdit"><button nbButton>Edit</button></div>
       </div>
-      <nb-card class="basicRight">
+      <nb-card class="basicRight" style="margin-bottom: 5%">
           <b>Name: {{user.name}}<p>Email: {{user.email}}</b>
       </nb-card>
     </div>
     <nb-tabset>
       <nb-tab tabTitle="Contact Details">
-        Contact Details
+        <input type="text" id="editButtonContact" disabled nbInput shape="rectangle" placeholder="9876789876" style="width: 60%">
+        <div style="float: right"><a (click)="saveContact()" nbButton>Save</a></div>
+        <div style="float: right; padding-right: 5%"><a (click)="editContact()" nbButton>Edit</a></div>
       </nb-tab>
       <nb-tab tabTitle="Interests and Skills">
-        Interests and Skills
+        <!--<div style="padding-bottom: 2%">-->
+        <input type="text" id="editButtonInterests" disabled nbInput shape="rectangle" placeholder="Interested in Data Science" style="width: 60%">
+        <div style="float: right"><a (click)="saveInterests()" nbButton>Save</a></div>
+        <div style="float: right; padding-right: 5%"><a (click)="editInterests()" nbButton>Edit</a></div><!--</div>-->
+        <!--<div>
+        <input type="text" id="editButtonSkills" disabled nbInput shape="rectangle" placeholder="Basics in C" style="width: 60%">
+        <div style="float: right"><a (click)="editSkills()" nbButton>Edit</a></div>
+        <div style="float: right; padding-right: 5%"><a (click)="saveSkills()" nbButton>Save</a></div></div>-->
       </nb-tab>
       <nb-tab tabTitle="Bio">
-        Bio
+        <input type="text" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%">
+        <div style="float: right"><a (click)="saveBio()" nbButton>Save</a></div>
+        <div style="float: right; padding-right: 5%"><a (click)="editBio()" nbButton>Edit</a></div>
       </nb-tab>
     </nb-tabset>
   </nb-card-body>
