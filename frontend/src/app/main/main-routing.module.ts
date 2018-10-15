@@ -20,23 +20,12 @@ const routes: Routes = [
         component : PostsComponent
       },
       {
-        path : '',
-<<<<<<< HEAD
-        component: HomeComponent
-      },
-      {
         path : 'aboutus',
         component: AboutusComponent
-=======
-        component: PostsComponent
-<<<<<<< HEAD
       },
       {
         path : 'home',
         component: HomeComponent
-=======
->>>>>>> 7dc3149a4fb2f0d1e631a975c04ea428c662ddc5
->>>>>>> fb922ccffb5b125eb6081d8ba7ee55e7b01d5b7c
       }
     ]
   }

@@ -18,7 +18,6 @@
 
 .waveWrapper {
     overflow: hidden;
-<<<<<<< HEAD
     position: absolute;
     left: 0;
     right: 0;
@@ -26,11 +25,6 @@
     top: 0;
     margin: auto;
     background-color: rgb(176, 210, 211);
-=======
-    position: relative;
-    height: 100%;
-    margin: 0;
->>>>>>> fb922ccffb5b125eb6081d8ba7ee55e7b01d5b7c
 }
 .waveWrapperInner {
     position: absolute;
