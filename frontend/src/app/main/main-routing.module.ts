@@ -21,11 +21,15 @@ const routes: Routes = [
       },
       {
         path : '',
+<<<<<<< HEAD
         component: HomeComponent
       },
       {
         path : 'aboutus',
         component: AboutusComponent
+=======
+        component: PostsComponent
+>>>>>>> 7dc3149a4fb2f0d1e631a975c04ea428c662ddc5
       }
     ]
   }
