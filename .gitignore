@@ -10,6 +10,7 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+node_modules/
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -192,7 +193,6 @@ ClientBin/
 *.jfm
 *.pfx
 *.publishsettings
-node_modules/
 orleans.codegen.cs
 
 # Since there are multiple workflows, uncomment next line to ignore bower_components

@@ -1,0 +1,13 @@
+:host nb-layout-header a {
+  font-size: 2rem;
+  text-decoration: none;
+}
+:host nb-layout-column {
+}
+:host nb-layout-column:first-child {
+  background: #f4f4f7;
+}
+.header-container{
+  width: 100%;
+  justify-content: space-between;
+}

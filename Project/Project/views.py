@@ -16,7 +16,7 @@ sys.modules["urllib"] = urlparse
 import json
 
 from flask_oauth import OAuth
-
+from flask import jsonify
 #Google Oauth credentials
 GOOGLE_CLIENT_ID = '215508935254-1h7h7m0uu0bv79e1j5io7dun0do1pktu.apps.googleusercontent.com'
 GOOGLE_CLIENT_SECRET = 'LO0zUYsNyKv8CycagUyOHN43'
@@ -72,9 +72,10 @@ def index():
     return redirect(url_for('userbase'))
 
 
-
-
-
+@app.login_manager.unauthorized_handler
+def unauth_handler():
+    #see how to get the full url
+    return jsonify({"description":"Make a post request to http://127.0.0.1:5555 with username,password and next="+url_for(request.endpoint)})
 
 
 
@@ -88,11 +89,13 @@ def login_g():
 @app.route('/home')
 def home():
     """Renders the home page."""
+    return(jsonify("Home"))
+    '''
     return render_template(
         'home.html',
         title='Home Page',
         year=datetime.now().year,
-    )
+    )'''
 
 @app.route('/contact')
 def contact():

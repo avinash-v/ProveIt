@@ -1,0 +1,25 @@
+.postAuthor {
+  float: right;
+  position: relative;
+}
+.postBy {
+  font-weight: lighter;
+}
+.groupImg {
+  float: left;
+  position: relative;
+  border-radius: 50%;
+  height: 5vh;
+  width: 5vh;
+  overflow: hidden;
+}
+.postTitleBar {
+  font-weight: 500;
+  padding-bottom: 2vh;
+}
+.postCard {
+  padding: 2vh 2vh 2vh 2vh;
+}
+.postFormat {
+  background-color: lightsteelblue;
+}

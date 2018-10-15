@@ -1,0 +1,8 @@
+Have to be set as environment variables before running the change password code
+Alternatively can be set in .flaskenv before running the application
+(use SET for windows machines)
+export MAIL_SERVER=smtp.googlemail.com
+export MAIL_PORT=587
+export MAIL_USE_TLS=1
+export MAIL_USERNAME=admnprvt@gmail.com
+export MAIL_PASSWORD=ASDFGH1$
