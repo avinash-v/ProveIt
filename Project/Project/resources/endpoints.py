@@ -4,11 +4,13 @@ from Project.resources.login import Login,Logout
 from Project.resources.signup import SignUp
 from Project.resources.UserProfiles import UserProfiles
 #Remove after testing(Not required)
+from Project.resources.reset import EmailVer
 from flask_login import login_required
 
 
 
 api.add_resource(Login,"/login",endpoint='login')
+api.add_resource(EmailVer,'/reset',endpoint='email')
 api.add_resource(Logout,'/logout',endpoint ="logout")
 api.add_resource(SignUp,'/signup',endpoint="signup")
 api.add_resource(UserProfiles,"/profile/<username>",endpoint="getprofile")

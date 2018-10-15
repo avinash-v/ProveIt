@@ -3,6 +3,9 @@ from sqlalchemy.schema import PrimaryKeyConstraint
 from flask_login import UserMixin
 from Project import login
 from werkzeug.security import generate_password_hash, check_password_hash
+from Project.config import Config
+import jwt
+from time import time
 
 class User(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key = True)
@@ -18,6 +21,26 @@ class User(UserMixin,db.Model):
     
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+        
+    
+    def check_email(self, email):
+        return  True if self.email == email else False
+    	
+    #for email ver
+    def get_reset_password_token(self, expires_in=3600):
+    	key = Config.SECRET_KEY
+    	return jwt.encode({'reset_password': self.id, 'exp': time() + expires_in},key,algorithm='HS256').decode('utf-8')
+
+	#for email ver
+    @staticmethod
+    def verify_reset_password_token(token):
+        key = Config.SECRET_KEY
+        try:
+            id = jwt.decode(token,key,algorithms=['HS256'])['reset_password']
+        except:
+        	print("Token has expired or become invalidated , or something went wrong")
+        	return
+        return User.query.get(id)
 
 @login.user_loader
 def load_user(id):
