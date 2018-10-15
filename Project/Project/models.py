@@ -37,11 +37,13 @@ class UserProfile(db.Model):
     firstName = db.Column(db.String(128),index=True)
     lastName = db.Column(db.String(128),index=True)
     #DOB
+    dob = db.column(db.Date) 
     #Assuming only one contact.If there are more than 1 contacts we need to denormalize it and shit...
     contact = db.Column(db.String(128),index=True,unique=True)
     bio = db.Column(db.String(512),index=True)
     interests = db.Column(db.String(512),index=True)
-    #skill 
+    #skill
+    skills = db.Column(db.Text,index=True) 
     userType = db.Column(db.String(128),index=True)
 
 
@@ -51,7 +53,7 @@ class UserProfile(db.Model):
 
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<UserProfile {}>'.format(self.firstName)
 
 class CollegeRepresentative(UserProfile):
     designation = db.Column(db.String(512),index=True)
@@ -95,7 +97,7 @@ class Group(db.Model):
 
 class ResearchGroup(Group):
     __mapper_args__={
-    "polymorphic_identity" : "research group"
+    "polymorphic_identity" : "researchgroup"
     }
 
 class ProjectGroup(Group):
@@ -103,13 +105,14 @@ class ProjectGroup(Group):
     topic = db.Column(db.String(256),index=True)
 
     __mapper_args__={
-    "polymorphic_identity" : "project group"
+    "polymorphic_identity" : "projectgroup"
     }
 
 class UserToGroup(db.Model):
     userId = db.Column(db.Integer,db.ForeignKey("user_profile.id"))
     groupId = db.Column(db.Integer,db.ForeignKey("group.id"))
     #role
+    role = db.Column(db.String(20),index=True)
     __table_args__ = (PrimaryKeyConstraint(userId,groupId),)
 
 
