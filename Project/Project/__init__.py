@@ -10,7 +10,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_restful import Api
 from flask_cors import CORS
-from flask_mail import Mail
+
 app = Flask(__name__)
 #To support CORS
 CORS(app, supports_credentials=True)

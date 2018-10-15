@@ -72,8 +72,7 @@ class EmailVer(Resource):
                html_body="<p>Dear  userdata.username  ,\
                				</p><p> To reset your password \
     								<a href=test.html,token=token, _external=True> \
-        							click here \
-    						</a>.\
+        							click here</a>. \
 							</p> \
 							<p>Alternatively, you can paste the following link in your browser's address bar:</p> \
 							<p>test.html (needs to be sent with url,- token=token, external=True)</p> <p>If you have not \
