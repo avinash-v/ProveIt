@@ -13,11 +13,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(){
 
   }
-  
   public toggleNamedColor(): void {
-    
         this.buttonColor = '#87CEFA';
-      
     }
 
 }

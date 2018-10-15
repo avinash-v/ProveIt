@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 
 import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Browser } from 'protractor';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +18,10 @@ import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgbModule.forRoot(),
     NbThemeModule.forRoot(  { name : 'default' }  ),
+    BrowserModule,
+    BrowserAnimationsModule,
     NbAuthModule.forRoot({
       strategies: [
         NbPasswordAuthStrategy.setup({

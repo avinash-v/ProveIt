@@ -8,6 +8,34 @@ import { NbSidebarService, NbMenuService } from '@nebular/theme';
 })
 export class MainComponent implements OnInit {
   items = [{title : 'Profile' }, {title : 'Logout'}];
+  item_menu = [
+    {
+      title: 'Groups',
+      expanded: false,
+      icon: 'ion ion-android-radio-button-off',
+      children: [
+        {
+          title: 'SE Research Group',
+          link: [], // goes into angular `routerLink`
+        }
+      ],
+    },
+    {
+      title: 'Projects',
+      expanded: false,
+      icon: 'ion ion-android-radio-button-off',
+      children: [
+        {
+          title: 'SE Project Group',
+          link : []
+        }
+      ]
+    },
+    {
+      title: 'Reimbursements',
+      link: [],
+    },
+  ];
   constructor(private sidebarService: NbSidebarService, private menuService: NbMenuService) { }
 
   toggleSidebar() {
@@ -15,7 +43,6 @@ export class MainComponent implements OnInit {
     return false;
   }
   ngOnInit() {
-    
   }
 
 }

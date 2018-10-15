@@ -24,7 +24,8 @@
             ],
             "styles": [
               "./node_modules/@nebular/theme/styles/prebuilt/default.css",
-              "./node_modules/nebular-icons/scss/nebular-icons.scss"
+              "./node_modules/nebular-icons/scss/nebular-icons.scss",
+              "./node_modules/ionicons/dist/scss/ionicons.scss"
             ],
             "scripts": []
           },
