@@ -10,25 +10,58 @@
       </nb-card>
     </div>
     <nb-tabset>
-      <nb-tab tabTitle="Contact Details">
-        <input type="text" id="editButtonContact" disabled nbInput shape="rectangle" placeholder="9876789876" style="width: 60%">
-        <div style="float: right"><a (click)="saveContact()" nbButton>Save</a></div>
-        <div style="float: right; padding-right: 5%"><a (click)="editContact()" nbButton>Edit</a></div>
+      <nb-tab tabTitle="Personal Details" id="personal">
+        <div style="padding-top: 1%">
+        <input type="text" id="editButtonName" disabled nbInput shape="rectangle" placeholder="Erica" style="width: 60%; margin-left: 4.5vh">
+        <div style="margin: 1%; float: left; font-family: sans-serif; font-weight: bold;">Full Name</div></div>
+      <div style="padding-top: 1%">
+        <input type="text" id="editButtonContact" disabled nbInput shape="rectangle" placeholder="9876789876" style="width: 60%;">
+      <div style="margin: 1%; float: left; font-family: sans-serif; font-weight: bold;">Phone Number</div></div>
+        <div style="padding-top: 1%">
+        <input type="text" id="editButtonDob" disabled nbInput shape="rectangle" placeholder="16/06/1997" style="width: 60%; margin-left: 2vh">
+        <div style="margin: 1%; float: left; font-family: sans-serif; font-weight: bold;">Date Of Birth</div></div>
+        <div style="padding-top: 1%">
+        <input type="text" id="editButtonGender" disabled nbInput shape="rectangle" placeholder="Female" style="width: 60%; margin-left: 7vh">
+        <div style="margin: 1%; float: left; font-family: sans-serif; font-weight: bold;">Gender</div></div>
+        <div style="padding-top: 1%">
+        <input type="text" id="editButtonUsn" disabled nbInput shape="rectangle" placeholder="01FB15ECS020" style="width: 60%; margin-left: 9.5vh">
+        <div style="margin: 1%; float: left; font-family: sans-serif; font-weight: bold;">USN</div></div>
+        <div id="saveContactPadding" style="float: left; padding-top: 2%;"><a style="visibility: hidden; display: none" id="saveButtonDetails" (click)="saveContact()" nbButton>Save</a></div>
+        <div style="float: left; padding-top: 2%"><a style="visibility: hidden; display: none" id="cancelButtonDetails" (click)="cancelContact()" nbButton>Cancel</a></div>
+        <div id="editContactPadding" style="float: left; padding-right: 5%; padding-top: 2%"><a style="display: inline" id="editButtonDetails" (click)="editContact()" nbButton>Edit</a></div>
       </nb-tab>
+
+
       <nb-tab tabTitle="Interests and Skills">
         <!--<div style="padding-bottom: 2%">-->
-        <input type="text" id="editButtonInterests" disabled nbInput shape="rectangle" placeholder="Interested in Data Science" style="width: 60%">
-        <div style="float: right"><a (click)="saveInterests()" nbButton>Save</a></div>
-        <div style="float: right; padding-right: 5%"><a (click)="editInterests()" nbButton>Edit</a></div><!--</div>-->
+          <div style="padding-top: 1%">
+        <textarea rows="6" id="ButtonInterests" disabled nbInput shape="rectangle" placeholder="Interested in Data Science" style="width: 60%;"></textarea>
+        <div style="margin: 1%; float: left; font-family: sans-serif; font-weight: bold;">Interests</div></div>
+        <div style="padding-top: 1.7%">
+        <textarea rows="5" id="ButtonSkills" disabled nbInput shape="rectangle" placeholder="Basics in C" style="width: 60%; margin-left: 3vh"></textarea>
+        <div style="margin: 1%; float: left; font-family: sans-serif; font-weight: bold;">Skills</div></div>
+        <!--<input type="text" id="editButtonInterests" disabled nbInput shape="rectangle" placeholder="Interested in Data Science" style="width: 60%">-->
+        <div id="saveInterestsPadding" style="float: left; padding-top: 2%;"><a style="visibility: hidden; display: none" id="saveButtonSkills" (click)="saveInterests()" nbButton>Save</a></div>
+        <div style="float: left; padding-top: 2%"><a style="visibility: hidden; display: none" id="cancelButtonSkills" (click)="cancelInterests()" nbButton>Cancel</a></div>
+        <div id="editInterestsPadding" style="float: left; padding-right: 5%; padding-top: 2%"><a style="display: inline" id="editButtonSkills" (click)="editInterests()" nbButton>Edit</a></div>
+        <!--<div style="float: right"><a (click)="saveInterests()" nbButton>Save</a></div>
+        <div style="float: right; padding-right: 5%"><a (click)="editInterests()" nbButton>Edit</a></div>-->
+        <!--</div>-->
         <!--<div>
         <input type="text" id="editButtonSkills" disabled nbInput shape="rectangle" placeholder="Basics in C" style="width: 60%">
         <div style="float: right"><a (click)="editSkills()" nbButton>Edit</a></div>
         <div style="float: right; padding-right: 5%"><a (click)="saveSkills()" nbButton>Save</a></div></div>-->
       </nb-tab>
       <nb-tab tabTitle="Bio">
-        <input type="text" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%">
+        <div style="padding-top: 1%">
+        <textarea rows="14" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%;"></textarea>
+        <div style="margin: 1%; float: left; font-family: sans-serif; font-weight: bold;">Bio</div></div>
+        <div id="saveBioPadding" style="float: left; padding-top: 2%;"><a style="visibility: hidden; display: none" id="saveButtonData" (click)="saveBio()" nbButton>Save</a></div>
+        <div style="float: left; padding-top: 2%"><a style="visibility: hidden; display: none" id="cancelButtonData" (click)="cancelBio()" nbButton>Cancel</a></div>
+        <div id="editBioPadding" style="float: left; padding-right: 5%; padding-top: 2%"><a style="display: inline" id="editButtonData" (click)="editBio()" nbButton>Edit</a></div>
+        <!--<input type="text" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%">
         <div style="float: right"><a (click)="saveBio()" nbButton>Save</a></div>
-        <div style="float: right; padding-right: 5%"><a (click)="editBio()" nbButton>Edit</a></div>
+        <div style="float: right; padding-right: 5%"><a (click)="editBio()" nbButton>Edit</a></div>-->
       </nb-tab>
     </nb-tabset>
   </nb-card-body>
