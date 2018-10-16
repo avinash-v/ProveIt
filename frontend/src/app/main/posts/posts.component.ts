@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NbSidebarService } from '@nebular/theme';
+import { UserService } from "../user.service";
+import { User } from "../user";
 
 @Component({
   selector: 'app-posts',
@@ -9,7 +11,8 @@ import { NbSidebarService } from '@nebular/theme';
 
 })
 export class PostsComponent implements OnInit {
-  user = {
+  user: User = {
+    userId: "001",
     picture: "assets/prof_def.jpg",
     name: "Alk",
     email: "test@test.com",
@@ -23,14 +26,15 @@ export class PostsComponent implements OnInit {
   public editInterestsValue: string;
   public editSkillsValue: string;
   public editBioValue: string;
-  //constructor() { }
+  constructor(
+    private sidebar: NbSidebarService) { }
 
   posts: any;
-  constructor(private sidebar: NbSidebarService) { }
 
   ngOnInit() {
     this.sidebar.expand();
   }
+
   public editContact():void{
     var editContactElement = <HTMLInputElement>document.getElementById('editButtonContact');
     var editDobElement = <HTMLInputElement>document.getElementById('editButtonDob');
