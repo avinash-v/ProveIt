@@ -41,6 +41,20 @@ def GetProjects(userId):
             retVal2.append(mem2.name)
     return retVal1, retVal2
     
+#Please only call this function after validating if Group of grpId exists. Thank you -Akhil
+def AddMembers(members,grpId):
+    warning = False
+    warningMsg = ""
+    members = json.loads(members)
+    g = Group.query.filter_by(id=grpId).first() 
+    for i in members:
+        u = User.query.filter_by(username=i).first()
+        if u is None:
+            continue
+        if 
+
+        
+
 
 
 class ProjectBase(Resource):

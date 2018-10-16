@@ -4,7 +4,7 @@ import os
 class Config(object):
 	SECRET_KEY = os.environ.get('SECRET_KEY') or 'igpayatinlay'
 	
-	SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join("/home/mayank/ProveIt/Project", 'app.db') #change this to your server location, have to set a variable that points to server folder. :/
+	SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + '../app.db'#+ os.path.join("/home/mayank/ProveIt/Project", 'app.db') #change this to your server location, have to set a variable that points to server folder. :/
 	
 	SQLALCHEMY_TRACK_MODIFICATIONS = False #do not signal app everytime a change is made in db
 	MAIL_SERVER = os.environ.get('MAIL_SERVER')
