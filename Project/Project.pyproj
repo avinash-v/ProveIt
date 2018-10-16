@@ -36,6 +36,9 @@
     </Compile>
     <Compile Include="Project\resources\endpoints.py" />
     <Compile Include="Project\resources\login.py" />
+    <Compile Include="Project\resources\projectBase.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Project\resources\signup.py" />
     <Compile Include="runserver.py" />
     <Compile Include="Project\__init__.py" />
@@ -47,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".flaskenv" />
-    <Content Include="app.db" />
     <Content Include="libman.json" />
     <Content Include="requirements.txt" />
   </ItemGroup>
