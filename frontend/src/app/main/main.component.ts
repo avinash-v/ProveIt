@@ -29,7 +29,7 @@ export class MainComponent implements OnInit {
           title: 'SE Project Group',
           link : ['/posts'],
         }
-      ]
+      ],
     },
     {
       title: 'Reimbursements',
