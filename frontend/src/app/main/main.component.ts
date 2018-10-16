@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
       children: [
         {
           title: 'SE Project Group',
-          link : ['/posts']
+          link : ['/posts'],
         }
       ]
     },

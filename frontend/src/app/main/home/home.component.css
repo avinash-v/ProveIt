@@ -35,7 +35,6 @@
   transform: translate(-50%, 0%);
   position: absolute;
   z-index: 16;
-  background: #EFB169;
 }
 
 .waveWrapper {
@@ -131,4 +130,8 @@ div.middle {
 }
 .change{
   font-size:16px;
+}
+.cardHeader {
+  background-color: #EFB169;
+  text-align: center;
 }

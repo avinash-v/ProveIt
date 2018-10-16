@@ -5,7 +5,7 @@
     <div class="logoDiv">
       <img src="/assets/logo_tmp.png" width="85%" style="margin-left: auto; margin-right: auto; display: block;" />
     </div>
-    <a routerLink="/signup" (click)="toggleNamedColor()" class = "btn" nbButton shape="semi-round" outline class="getStarted" href="#" [ngStyle]="{'background-color': buttonColor, 'color' : 'black'}">Get started</a>
+    <a routerLink="/posts" (click)="toggleNamedColor()" class = "btn" nbButton shape="semi-round" outline class="getStarted" href="#" [ngStyle]="{'background-color': '#EFB169', 'color' : 'black'}">Get started</a>
 
     <div>
       <div class="waveWrapperInner bgTop">
@@ -29,7 +29,7 @@
       <div style="width: 22.5vw;"></div>
       <div class="left">
         <nb-card style="height: 45vh;">
-          <nb-card-header class="bg" style="background-color:#EFB169;text-align:center">View Projects<p></p> </nb-card-header>
+          <nb-card-header class="cardHeader">View Projects<p></p> </nb-card-header>
           <nb-card-body class="change">
             Browse through the projects of other students in your college, and follow them as they bring forth new advancements in the sciences.
           </nb-card-body>
@@ -38,7 +38,7 @@
       <div style="width: 5vw;"></div>
       <div class="middle">
         <nb-card style="height: 45vh;">
-          <nb-card-header style="background-color:#EFB169;text-align:center">Collaborate<p></p> </nb-card-header>
+          <nb-card-header class="cardHeader">Collaborate<p></p> </nb-card-header>
           <nb-card-body class="change">
             Collaborate and work on projects with the help of mentors, or just with fellow scholars, the tools are all here.
           </nb-card-body>
@@ -47,7 +47,7 @@
       <div style="width: 5vw;"></div>
       <div class="right">
         <nb-card style="height: 45vh;">
-          <nb-card-header style="background-color:#EFB169;text-align:center">Follow Research Groups</nb-card-header>
+          <nb-card-header class="cardHeader">Follow Research Groups</nb-card-header>
           <nb-card-body class="change">
             Follow and work under research groups, with experienced teachers as mentors. Have your projects featured on their page.
           </nb-card-body>
