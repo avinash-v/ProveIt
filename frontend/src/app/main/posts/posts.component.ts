@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-
+import { NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-posts',
@@ -15,10 +15,10 @@ export class PostsComponent implements OnInit {
     email: "test@test.com",
 };
   posts: any;
-  constructor() { }
+  constructor(private sidebar: NbSidebarService) { }
 
   ngOnInit() {
-
+    this.sidebar.expand();
   }
   public editContact():void{
     var fieldElement = <HTMLInputElement>document.getElementById('editButtonContact');
