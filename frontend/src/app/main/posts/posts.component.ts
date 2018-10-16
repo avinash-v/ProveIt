@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-posts',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,9 +14,11 @@ export class PostsComponent implements OnInit {
     name: "Alk",
     email: "test@test.com",
 };
+  posts: any;
   constructor() { }
 
   ngOnInit() {
+
   }
   public editContact():void{
     var fieldElement = <HTMLInputElement>document.getElementById('editButtonContact');

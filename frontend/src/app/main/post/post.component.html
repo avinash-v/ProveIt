@@ -1,13 +1,13 @@
-<nb-card class="postFormat">
-  <nb-card-header class="postCard"><img class="groupImg" src="{{postInfo.groupPic}}" alt="postimg" /><span class="postCard">{{postInfo.group}}</span></nb-card-header>
+<nb-card class="postFormat" *ngFor="let item of posts">
+  <nb-card-header class="postCard"><img class="groupImg" src="{{postInfo.groupPic}}" alt="postimg" /><span class="postCard">{{item.id}}</span></nb-card-header>
   <nb-card-body class="postCard">
     <div class="postTitleBar">
-      <span class="postTitle">{{postInfo.heading}}</span>
-      <span class="postAuthor"><span class="postBy">posted by: </span>{{postInfo.author}}</span>
+      <span class="postTitle">{{item.title}}</span>
+      <span class="postAuthor"><span class="postBy">posted by: </span>{{item.userId}}</span>
     </div>
     <nb-card>
       <nb-card-body>
-        {{postInfo.body}}
+        {{item.body}}
       </nb-card-body>
     </nb-card>
   </nb-card-body>
