@@ -12,8 +12,9 @@ import { MainComponent } from './main.component';
 import { PostComponent } from './post/post.component';
 import { HomeComponent } from './home/home.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { HttpClientModule } from '@angular/common/http';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { GetPostService } from './get-post.service';
 
 @NgModule({
   imports: [
@@ -29,9 +30,10 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     NbMenuModule.forRoot(),
     NbContextMenuModule,
     NbButtonModule,
-    NbInputModule
+    NbInputModule,
+    HttpClientModule
   ],
-  providers: [ NbSidebarService, NbMenuService ],
+  providers: [ NbSidebarService, NbMenuService, GetPostService ],
   declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent]
 })
 export class MainModule { }

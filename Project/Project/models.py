@@ -57,6 +57,7 @@ class UserProfile(db.Model):
     id = db.Column(db.Integer,db.ForeignKey("user.id"))
     #Thsi will take care of usn for Students,faculty ids ...
     collegeId = db.Column(db.Integer,index=True,unique=True,primary_key= True)
+
     firstName = db.Column(db.String(30),index=True)
     lastName = db.Column(db.String(30),index=True)
     dob = db.column(db.Date)
@@ -74,7 +75,8 @@ class UserProfile(db.Model):
 
 
     def __repr__(self):
-        return '<User {}>'.format(self.firstName)
+        return '<UserProfile {}>'.format(self.firstName)
+
 
 class CollegeRepresentative(UserProfile):
     designation = db.Column(db.String(30),index=True)
@@ -118,7 +120,7 @@ class Group(db.Model):
 
 class ResearchGroup(Group):
     __mapper_args__={
-    "polymorphic_identity" : "research group"
+    "polymorphic_identity" : "researchgroup"
     }
 
 class ProjectGroup(Group):
@@ -126,7 +128,7 @@ class ProjectGroup(Group):
     topic = db.Column(db.Text,index=True)
 
     __mapper_args__={
-    "polymorphic_identity" : "project group"
+    "polymorphic_identity" : "projectgroup"
     }
 
 class UserToGroup(db.Model):
