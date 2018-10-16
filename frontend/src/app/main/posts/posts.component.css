@@ -5,14 +5,13 @@
   height: 20vh;
 }
 .basicRight {
-  position: absolute;
-  left: 25vh;
-  bottom: 55vh;
+  position: relative;
+  left: 5vh;
   display: inline-block;
   padding-top: 2vh;
   padding-right: 2vh;
   padding-left: 2vh;
-  background-color: blue;
+  background-color: sandybrown;
   color: white;
 }
 .basicImg {
