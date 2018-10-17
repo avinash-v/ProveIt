@@ -39,7 +39,10 @@
     <Compile Include="Project\resources\projectBase.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Project\resources\recommenderSystem.py" />
+    <Compile Include="Project\resources\reset.py" />
     <Compile Include="Project\resources\signup.py" />
+    <Compile Include="Project\resources\UserProfiles.py" />
     <Compile Include="runserver.py" />
     <Compile Include="Project\__init__.py" />
     <Compile Include="Project\views.py" />
@@ -51,6 +54,7 @@
   <ItemGroup>
     <Content Include=".flaskenv" />
     <Content Include="libman.json" />
+    <Content Include="Project\resources\email_req.txt" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
