@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NbSidebarService } from '@nebular/theme';
 @Component({
   selector: 'app-aboutus',
   templateUrl: './aboutus.component.html',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutusComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sidebar: NbSidebarService) { }
 
   ngOnInit() {
+    this.sidebar.collapse();
   }
 
 }

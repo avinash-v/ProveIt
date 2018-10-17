@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { NbSidebarService, NbMenuService } from '@nebular/theme';
+import { NbMenuService } from '@nebular/theme';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -36,12 +36,7 @@ export class MainComponent implements OnInit {
       link: [],
     },
   ];
-  constructor(private sidebarService: NbSidebarService, private menuService: NbMenuService) { }
-
-  toggleSidebar() {
-    this.sidebarService.toggle(false);
-    return false;
-  }
+  constructor(private menuService: NbMenuService) { }
   ngOnInit() {
   }
 

@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from Project.config import Config
 import jwt
 from time import time
-
+from datetime import datetime
 class User(UserMixin,db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -126,21 +126,50 @@ class ResearchGroup(Group):
 class ProjectGroup(Group):
     researchGroup = db.Column(db.Integer,db.ForeignKey("group.id"))
     topic = db.Column(db.Text,index=True)
-
     __mapper_args__={
     "polymorphic_identity" : "projectgroup"
     }
+#TODO:
+#   ~ functions to map project groups with User Query.
+#   ~ Functions to map projects groups in Research group, 
 
 class UserToGroup(db.Model):
     userId = db.Column(db.Integer,db.ForeignKey("user_profile.id"))
     groupId = db.Column(db.Integer,db.ForeignKey("group.id"))
+    relationship = db.Column(db.String(10),index=True,default="member")
     role = db.Column(db.String(20),index=True)
-    __table_args__ = (PrimaryKeyConstraint(userId,groupId),)
+    __table_args__ = (PrimaryKeyConstraint(userId,groupId),)  
 
+class GroupFollowersGroup(db.Model):
+    groupIdFollowed = db.Column(db.Integer,db.ForeignKey("group.id"))
+    groupIdFollower = db.Column(db.Integer,db.ForeignKey("group.id"))   
+    __table_args__ = (PrimaryKeyConstraint(groupIdFollower,groupIdFollowed),)
 
-#TODO:
-#   ~ functions to map project groups with User Query.
-#   ~ Functions to map projects groups in Research group,   
+class Post(db.Model):
+    id = db.Column(db.Integer,index=True,primary_key=True)
+    groupIdPosted = db.Column(db.Integer,db.ForeignKey("group.id"),index=True)
+    content = db.Column(db.Text,index=True)
+    datetime = db.Column(db.DateTime,default=datetime.utcnow)
+    visibility = db.Column(db.String(10),index=True)
+    owner = db.Column(db.String(10),index=True)
+    __mapper_args__={
+    "polymorphic_on" : "owner"
+    }
+
+class UserPost(Post):
+    userIdOwner = db.Column(db.Integer,db.ForeignKey("user.id"))
+
+    __mapper_args__ = {
+    "polymorphic_identity" : "user"
+    }
+
+class GroupPost(Post):
+    groupIdOwner = db.Column(db.Integer,db.ForeignKey("group.id"))
+
+    __mapper_args__ = {
+    "polymorphic_identity" : "group"
+    }
+
 
 
 

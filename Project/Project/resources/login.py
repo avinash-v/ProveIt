@@ -8,9 +8,11 @@ from flask_cors import CORS,cross_origin
 from flask import jsonify
 headers = {"Content-Type": "application/json"}
 class Login(Resource):
-	@cross_origin()
+	@cross_origin(origins="*",supports_credentials=True)
 	def post(self):
+		print(request.url)
 		if current_user.is_authenticated:
+			headers = {"Content-Type": "application/json"}
 			return jsonify({"description":"The user is already logged in","url" : url_for('userbase')}),200,headers
 		json_data = request.get_json(force=True)
 		username = json_data["username"]
@@ -41,9 +43,12 @@ class Login(Resource):
 			next_page = "http://127.0.0.1/home" #else default next page is home
 		return jsonify({"decription" : "The user has been successfully logged in","url" : next_page}),200,headers
 
+
+#As of now CORS is not working with login_required decorator.ALternative is to use current_user.is_authenticated as Akhil suggested but this wont support next redirect.
+#To do that we have to add functionality on the client side i.e. front end.
 class Logout(Resource):
-	decorators=[login_required]
-	@cross_origin(origins="*")
+	@cross_origin(origins="*",supports_credentials=True)
+	@login_required
 	def get(self):
 		logout_user()
 		return jsonify({"description" : "The user has been successfully logged out","url" : url_for('extra')}),200,headers

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { GetPostService } from '../get-post.service';
 import { Posts } from '../posts';
+import { NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'post',
@@ -17,7 +18,8 @@ export class PostComponent implements OnInit {
     body: "body"
   };
   posts: Object;
-  constructor(private getpost: GetPostService, private ref: ChangeDetectorRef) {}
+  constructor(private getpost: GetPostService, private ref: ChangeDetectorRef,
+  private sidebar: NbSidebarService) {}
   getPostsForUser(): void {
     this.getpost.getPosts()
     .subscribe(
@@ -28,6 +30,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sidebar.expand();
     this.getPostsForUser();
     console.log("started");
     //console.log(this.posts);

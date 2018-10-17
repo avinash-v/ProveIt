@@ -38,8 +38,6 @@ class UserProfiles(Resource):
 			username = None
 		u = User.query.filter_by(username=username).first()
 		Id = current_user.id
-		print(Id)
-		print(u.id)
 		if u.id != Id:
 			return jsonify({"description:'You cannot add someone elses profile'"}),200,headers
 		try:
@@ -70,7 +68,12 @@ class UserProfiles(Resource):
 		except:
 			interests = None
 
-		student = UserProfile(id=Id,collegeId=collegeId,firstName=firstName,lastName=lastName,contact=contact,bio=bio,interests=interests,userType="student")
+		try:
+			userType = json_data["userType"]
+		except:
+			userType = None
+
+		student = UserProfile(id=Id,collegeId=collegeId,firstName=firstName,lastName=lastName,contact=contact,bio=bio,interests=interests,userType=userType)
 
 		db.session.add(student)
 		db.session.commit()
@@ -85,7 +88,7 @@ class UserProfiles(Resource):
 		try:
 			collegeId = json_data["collegeId"]
 		except:
-			collegeId = None
+			collegeId = u.collegeId
 		u1 = UserProfile.query.filter_by(collegeId = collegeId)
 		count = 0
 		for i in u1:
@@ -96,15 +99,15 @@ class UserProfiles(Resource):
 		try:
 			firstName = json_data["firstName"]
 		except:
-			firstName = None
+			firstName = u.firstName
 		try:
 			lastName = json_data["lastName"]
 		except:
-			lastName = None
+			lastName = u.lastName
 		try:
 			contact = json_data["contact"]
 		except:
-			contact = None
+			contact = u.contact
 		u1 = UserProfile.query.filter_by(contact = contact)
 		count = 0
 		for i in u1:
@@ -114,11 +117,11 @@ class UserProfiles(Resource):
 		try:
 			bio = json_data["bio"]
 		except:
-			bio = None
+			bio = u.bio
 		try:
 			interests = json_data["interests"]
 		except:
-			interests = None
+			interests = u.interests
 
 		u.collegeId = collegeId
 		u.firstName = firstName

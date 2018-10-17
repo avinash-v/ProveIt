@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   public buttonColor: string = 'white';
-  constructor() { }
+  constructor(private sidebar: NbSidebarService) { }
 
   ngOnInit(){
-
+    this.sidebar.collapse();
   }
   public toggleNamedColor(): void {
         this.buttonColor = '#87CEFA';
-    }
+  }
 
 }
