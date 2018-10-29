@@ -32,7 +32,7 @@ def GetMembers(projectId):
 def GetProjects(userId):
     retVal1 = []
     retVal2 = []
-    for i in UserToGroup.query.filter_by(userId=userId):
+    for i in UserToGroup.query.filter_by(userId=userId,relationship="member"):
         mem1 = Group.query.filter_by(id=i.groupId,groupType='researchgroup').first()
         mem2 = Group.query.filter_by(id=i.groupId,groupType='projectgroup').first()
         if mem1 is not None:
@@ -213,10 +213,10 @@ class ProjectBase(Resource):
                     except:
                         topic = None
                     group = ProjectGroup(name=project_name,owner=current_user.username,domain=domain,abstract=abstract,subOwner=subowner,groupType=projectType, researchGroup= rgp,topic = topic)
-                    utg = UserToGroup(userId=current_user.id,groupId=group.id)
+                    utg = UserToGroup(userId=current_user.id,groupId=group.id,relationship="member")
                 else:
                     group = ResearchGroup(name=project_name,owner=current_user.username,domain=domain,abstract=abstract,subOwner=subowner,groupType=projectType)
-                    utg = UserToGroup(userId=current_user.id,groupId=group.id)
+                    utg = UserToGroup(userId=current_user.id,groupId=group.id,relationship="member")
                     
                 
                 db.session.add(group)
