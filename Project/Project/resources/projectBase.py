@@ -160,17 +160,21 @@ class ProjectBase(Resource):
         
         #try except blocks for the data fields have to be done !!!!!
         if current_user.is_authenticated:
-            if Group.query.filter_by(name=project_name).first() is not None:
-                return {'description':'Invalid project name; Project already exists','error':True},401,headers
-            u1 = User.query.filter_by(username = current_user.username).first()
             usr = UserProfile.query.filter_by(id=current_user.id).first()
+            if usr is None:
+                return {'description':'No UserProfile created. Need UserType to create projects','error':True},401,headers
+            if Group.query.filter_by(name=project_name).first() is not None:
+                return jsonify({'description':'Invalid project name; Project already exists','error':True}),401,headers
+
+            u1 = User.query.filter_by(username = current_user.username).first()
+            
             #return {"test":u1.id},200,headers
             try:
                 projectType = data['groupType']
             except:
                 projectType = None
             if(usr.userType != 'faculty' and projectType == 'researchgroup'):
-                return {'description':'Only Faculty can create Research Groups','error':True}, 401,headers
+                return jsonify({'description':'Only Faculty can create Research Groups','error':True}), 401,headers
             else:
                 owner = u1.username
                 try:
@@ -221,7 +225,7 @@ class ProjectBase(Resource):
                 
                 db.session.add(group)
                 db.session.commit()
-                return {'description':'Group created successfully','error':False,'warning':warning,'warningMsg':warningMsg}, 201,headers
+                return jsonify({'description':'Group created successfully','error':False,'warning':warning,'warningMsg':warningMsg}), 201,headers
 
                     
         return {'description':'Only Loggged In Users can creat Groups','error':True},401,headers
@@ -233,7 +237,7 @@ class ProjectBase(Resource):
         isOwner = False
         grp = Group.query.filter_by(name=project_name).first()
         if grp is None:
-            return {'description':'Project Does not exist','error':True},200,headers
+            return jsonify({'description':'Project Does not exist','error':True}),200,headers
         if current_user.username == grp.owner:
             isOwner = True
         if current_user.username in GetMembers(grp.id):
@@ -298,31 +302,31 @@ class ProjectBase(Resource):
 
             try:
                 db.session.commit()
-                return {'description':'Successful update of Group','error':False,'warning':warning,'warningMsg':warningMsg},201,headers
+                return jsonify({'description':'Successful update of Group','error':False,'warning':warning,'warningMsg':warningMsg}),201,headers
             except:
-                return {'description':'Unknown Error, failure to commit','error':True,'warning':warning,'warningMsg':warningMsg},200,headers
+                return jsonify({'description':'Unknown Error, failure to commit','error':True,'warning':warning,'warningMsg':warningMsg}),200,headers
 
             
 
 
         else:
-            return {'description':'Only Project members can modify Group details','error':True,'warning':warning,'warningMsg':warningMsg},401,headers
+            return jsonify({'description':'Only Project members can modify Group details','error':True,'warning':warning,'warningMsg':warningMsg}),401,headers
 
     def delete(self,project_name):
         warning = False
         warningMsg = ""
         grp = Group.query.filter_by(name=project_name).first()
         if grp is None:
-            return {'description':'Project Does not exist','error':True},200,headers
+            return jsonify({'description':'Project Does not exist','error':True}),200,headers
         if current_user.username == grp.owner:
             try:
                 session.delete(grp)
                 session.commit()
-                return {'description':'Successful deletion of Group','error':False,'warning':warning,'warningMsg':warningMsg},201,headers
+                return jsonify({'description':'Successful deletion of Group','error':False,'warning':warning,'warningMsg':warningMsg}),201,headers
             except:
                 warning = True
                 warningMsg = "Db deletin error"
-                return {'description':'Unknown Error, failure to commit','error':True,'warning':warning,'warningMsg':warningMsg},200,headers
+                return jsonify({'description':'Unknown Error, failure to commit','error':True,'warning':warning,'warningMsg':warningMsg}),200,headers
 
         else:
             if current_user.username in getMembers(grp.id):
@@ -330,11 +334,11 @@ class ProjectBase(Resource):
                 temp_list.append(current_user.username)
                 warning, warningMsg = RemoveMembers(temp_list,grp.id)
                 if(warning == True):
-                    return {'description':'Failure to delete user from group','error':True,'warning':warning,'warningMsg':warningMsg},200,headers
+                    return jsonify({'description':'Failure to delete user from group','error':True,'warning':warning,'warningMsg':warningMsg}),200,headers
                 else:
-                    return {'description':'Successful deletion of User from Group','error':False,'warning':warning,'warningMsg':warningMsg},201,headers
+                    return jsonify({'description':'Successful deletion of User from Group','error':False,'warning':warning,'warningMsg':warningMsg}),201,headers
             else:
-                return {'description':'Only User related to Group can Delete Group details','error':True},401,headers
+                return jsonify({'description':'Only User related to Group can Delete Group details','error':True}),401,headers
 
              
 
@@ -345,7 +349,7 @@ class UserProjects(Resource):
     def get(self,user_name):
         usr = User.query.filter_by(username=user_name).first()
         if usr is None:
-            return {'description':'User Does Not Exist','error':True}
+            return jsonify({'description':'User Does Not Exist','error':True}),200,headers
         research, project = list(GetProjects(usr.id))
         numberProjects = len(project)
         numberResearch = len(research)
