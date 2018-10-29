@@ -10,10 +10,31 @@
     }
 }
 
-.bg-img{
-    background: url('../../../assets/research2.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+.bg-img {
+  width: 50%;
+  position: relative;
+  z-index: 15;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 16;
+}
+.logoDiv {
+  left: 50vw;
+  top: 15vh;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 16;
+  border-radius: 500px;
+  background-color: white;
+  width: 15%;
+}
+
+.getStarted {
+  left: 50vw;
+  top: 25vh;
+  transform: translate(-50%, 0%);
+  position: absolute;
+  z-index: 16;
 }
 
 .waveWrapper {
@@ -81,43 +102,36 @@
 }
 
 div.left {
-        
-	width:200px;
-        height:270px;
-	background: #ffffff;
-        float:left;
-        margin-right:120px;
-        
-}	
-div.right {
-	
-	width:200px;
-        height:270px;
-	background: #ffffff;
-	float:left;
-        margin-right:120px;
-	}
-div.middle{
-	
-	width:200px;
-        height:270px;
-	background:#ffffff;
-        float:left;
-        margin-right:120px;
-	}
-.postformat{
-    width:200px;
-    height:270px;
+  width: 15vw;
+  height: 30vh;
+  border-radius: 10px;
+  background: #ffffff;
+  z-index: 20;
 }
-.wrapper{
-   width:3500px;
-   height:400px;
-   padding-left:220px;
-   padding-top:70px;
-   z-index:20;
-   position:fixed;
+div.right {
+  width: 15vw;
+  height: 30vh;
+  border-radius: 10px;
+  background: #ffffff;
+  z-index: 20;
+}
+div.middle {
+  width: 15vw;
+  height: 30vh;
+  border-radius: 10px;
+  background: #ffffff;
+  z-index: 20;
+}
+.wrapper {
+  bottom: 20vh;
+  position: absolute;
+  display: flex;
+  flex: 1;
 }
 .change{
   font-size:16px;
-  font-family: "Allerta Stencil", Sans-serif;
+}
+.cardHeader {
+  background-color: #EFB169;
+  text-align: center;
 }

@@ -7,7 +7,7 @@ import { NbMenuService } from '@nebular/theme';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  items = [{title : 'Profile' }, {title : 'Logout'}];
+  items = [{ title: 'Profile', link: ['/profile']}, {title : 'Logout', link: ['']}];
   item_menu = [
     {
       title: 'Groups',
@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
       children: [
         {
           title: 'SE Research Group',
-          link: [], // goes into angular `routerLink`
+          link: ['/posts'], // goes into angular `routerLink`
         }
       ],
     },
@@ -27,9 +27,9 @@ export class MainComponent implements OnInit {
       children: [
         {
           title: 'SE Project Group',
-          link : []
+          link : ['/posts'],
         }
-      ]
+      ],
     },
     {
       title: 'Reimbursements',
