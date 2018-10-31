@@ -2,6 +2,18 @@ import re
 import math
 from collections import Counter
 
+'''
+Add Database (Table Name: openings)
+project_id | skills Required 
+1 | Java, C programming, R programming 
+3 | NodeJs, HTML, CSS
+5 | C programming, Java, Python
+8 | NodeJs, Java 
+
+Skills(Requirements-frontend):
+Seperate with commas. 
+Fixed name for skills 
+'''
 
 WORD = re.compile(r'\w+')
 
@@ -22,7 +34,9 @@ def text_to_vector(text):
      words = WORD.findall(text)
      return Counter(words)
 
+#text1 contains user_skills
 text1 = 'C programming,Java,Python'
+#text2 contains list of list in the form of [project_id,skills Required]
 text2=[[1,"Java, C programming, R programming"],[3,"NodeJs, HTML, CSS"],[5,"C programming, Java, Python"],[8,"NodeJs, Java"]]
 
 vector1 = text_to_vector(text1)
@@ -32,10 +46,10 @@ for i in range(len(text2)):
 	vector2 = text_to_vector(text2[i][1])
 	cosine = get_cosine(vector1, vector2)
 	l.append(cosine)
-	print 'Project id: ',text2[i][0],'Cosine:', cosine
+	#print 'Project id: ',text2[i][0],'Cosine:', cosine
 	if(cosine>val):
 		val=cosine
 		projid=text2[i][0]
 		#max=val
-print 'Max Project id', projid, 'Similarity: ',val
-print 'Recommendation for user: See project_id ', projid
+#print 'Max Project id', projid, 'Similarity: ',val
+print 'Recommendation for user: See project_id ', projid #Return the projid of max similarity between text1 and text2
