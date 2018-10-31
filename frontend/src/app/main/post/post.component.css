@@ -23,3 +23,7 @@
 .postFormat {
   background-color: lightsteelblue;
 }
+.flexbox{
+  display: flex;
+  flex-wrap: nowrap;
+}
