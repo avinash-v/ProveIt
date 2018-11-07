@@ -19,6 +19,6 @@
             </nb-menu>
             <nb-sidebar-footer center>♥ from the Devs Team</nb-sidebar-footer>      
   </nb-sidebar>
-  <nb-layout-column class="main-content"><router-outlet></router-outlet></nb-layout-column>
+  <nb-layout-column class="main-content" [nbSpinner]="loading"><router-outlet></router-outlet></nb-layout-column>
   
 </nb-layout>

@@ -8,6 +8,9 @@
         <div class="flexbox"><input nbInput round><button nbButton>Post</button></div>
       </nb-card-body>
     </nb-card>
+    <nb-card *ngIf="postLoadincomplete">
+      <nb-card-body [nbSpinner]="postLoadincomplete"></nb-card-body>
+    </nb-card>
     <nb-card class="postFormat" *ngFor="let item of posts">
       <nb-card-header class="postCard"><img class="groupImg" src="{{postInfo.groupPic}}" alt="postimg" /><span class="postCard">{{item.id}}</span></nb-card-header>
       <nb-card-body class="postCard">

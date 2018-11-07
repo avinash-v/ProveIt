@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { NbMenuService } from '@nebular/theme';
+import { Router , NavigationStart, NavigationEnd} from '@angular/router';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -8,6 +9,7 @@ import { NbMenuService } from '@nebular/theme';
 })
 export class MainComponent implements OnInit {
   items = [{ title: 'Profile', link: ['/profile']}, {title : 'Logout', link: ['']}];
+  loading = false;
   item_menu = [
     {
       title: 'Groups',
@@ -36,7 +38,16 @@ export class MainComponent implements OnInit {
       link: [],
     },
   ];
-  constructor(private menuService: NbMenuService) { }
+  constructor(private menuService: NbMenuService,router: Router) {
+    router.events.subscribe(event => {
+      if(event instanceof NavigationStart){
+        this.loading = true;
+      }
+      if(event instanceof NavigationEnd){
+        this.loading = false;
+      }
+    })
+   }
   ngOnInit() {
   }
 

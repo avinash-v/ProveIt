@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MainRoutingModule } from './main-routing.module';
 
 // tslint:disable-next-line:max-line-length
-import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule} from '@nebular/theme';
+import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule, NbSpinnerModule} from '@nebular/theme';
 
 import { PostsComponent } from './posts/posts.component';
 import { MainComponent } from './main.component';
@@ -33,7 +33,8 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
     NbButtonModule,
     NbInputModule,
     HttpClientModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    NbSpinnerModule
   ],
   providers: [ NbSidebarService, NbMenuService, GetPostService ],
   declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent]
