@@ -24,6 +24,7 @@
     "@nebular/auth": "^2.0.1",
     "@nebular/theme": "^2.0.1",
     "@ng-bootstrap/ng-bootstrap": "^3.3.0",
+    "angular-file-uploader": "^4.1.4",
     "core-js": "^2.5.4",
     "icons": "^1.0.0",
     "ionic-angular": "^3.9.2",
