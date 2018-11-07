@@ -12,6 +12,7 @@ import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Browser } from 'protractor';
+import { FileUploaderModule } from './file-uploader/file-uploader.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { Browser } from 'protractor';
       forms: {},
     }),
     HttpClientModule,
+    FileUploaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
