@@ -72,8 +72,12 @@ class UserProfiles(Resource):
 			userType = json_data["userType"]
 		except:
 			userType = None
+		try:
+			skills = json_data["skills"]
+		except:
+			skills = None
 
-		student = UserProfile(id=Id,collegeId=collegeId,firstName=firstName,lastName=lastName,contact=contact,bio=bio,interests=interests,userType=userType)
+		student = UserProfile(id=Id,collegeId=collegeId,firstName=firstName,lastName=lastName,contact=contact,bio=bio,interests=interests,userType=userType,skills=skills)
 
 		db.session.add(student)
 		db.session.commit()
@@ -122,6 +126,10 @@ class UserProfiles(Resource):
 			interests = json_data["interests"]
 		except:
 			interests = u.interests
+		try:
+			skills = json_data["skills"]
+		except:
+			skills = u.skills
 
 		u.collegeId = collegeId
 		u.firstName = firstName
@@ -129,6 +137,7 @@ class UserProfiles(Resource):
 		u.contact = contact
 		u.bio = bio
 		u.interests = interests
+		u.skills=skills
 		db.session.commit()
 		return jsonify({"description" : "The profile has been updated successfully"}),200,headers
 #Working partially need to handle a few cases.
