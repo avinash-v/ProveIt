@@ -6,7 +6,11 @@ import { MainRoutingModule } from './main-routing.module';
 
 // tslint:disable-next-line:max-line-length
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule,NbSelectModule} from '@nebular/theme';
+=======
+import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule, NbSpinnerModule} from '@nebular/theme';
+>>>>>>> 34798dd61fb23c26ea631c9e645faccc943b48cc
 =======
 import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule, NbSpinnerModule} from '@nebular/theme';
 >>>>>>> 34798dd61fb23c26ea631c9e645faccc943b48cc
@@ -37,8 +41,14 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
     NbButtonModule,
     NbInputModule,
 <<<<<<< HEAD
+<<<<<<< HEAD
     NbSelectModule,
     HttpClientModule
+=======
+    HttpClientModule,
+    AngularFileUploaderModule,
+    NbSpinnerModule
+>>>>>>> 34798dd61fb23c26ea631c9e645faccc943b48cc
 =======
     HttpClientModule,
     AngularFileUploaderModule,
