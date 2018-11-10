@@ -27,3 +27,8 @@
   display: flex;
   flex-wrap: nowrap;
 }
+
+[nbButton]:hover{
+  cursor: pointer;
+}
+

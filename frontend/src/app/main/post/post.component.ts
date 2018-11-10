@@ -17,15 +17,21 @@ export class PostComponent implements OnInit {
     heading: "head",
     body: "body"
   };
+  postLoadincomplete: boolean;
   posts: Object;
   constructor(private getpost: GetPostService, private ref: ChangeDetectorRef,
   private sidebar: NbSidebarService) {}
   getPostsForUser(): void {
+    this.postLoadincomplete = true;
     this.getpost.getPosts()
     .subscribe(
       data => { this.posts = data; },
-      err => { console.error(err); },
-      () => { this.ref.markForCheck(); }
+      err => { 
+        this.postLoadincomplete = false;
+        console.error(err); },
+      () => { 
+        this.postLoadincomplete = false;
+        this.ref.markForCheck(); }
     );
   }
 

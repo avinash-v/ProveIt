@@ -135,3 +135,7 @@ div.middle {
   background-color: #EFB169;
   text-align: center;
 }
+[nbButton]:hover{
+  cursor: pointer;
+}
+

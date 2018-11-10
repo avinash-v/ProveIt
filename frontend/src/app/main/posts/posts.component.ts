@@ -17,7 +17,7 @@ export class PostsComponent implements OnInit {
     name: "Alk",
     email: "test@test.com",
 };
-  
+
   public editContactValue: string;
   public editDobValue: string;
   public editNameValue: string;
@@ -26,6 +26,8 @@ export class PostsComponent implements OnInit {
   public editInterestsValue: string;
   public editSkillsValue: string;
   public editBioValue: string;
+  public tempGender: string;
+
   constructor(
     private sidebar: NbSidebarService) { }
 
@@ -39,14 +41,14 @@ export class PostsComponent implements OnInit {
     var editContactElement = <HTMLInputElement>document.getElementById('editButtonContact');
     var editDobElement = <HTMLInputElement>document.getElementById('editButtonDob');
     var editNameElement = <HTMLInputElement>document.getElementById('editButtonName');
-    var editGenderElement = <HTMLInputElement>document.getElementById('editButtonGender');
+    var editGenderElement = <HTMLInputElement>document.getElementById('editDivGender');
     var editUsnElement = <HTMLInputElement>document.getElementById('editButtonUsn');
     this.editContactValue = editContactElement.value;
     //console.log(this.editContactValue);
     this.editDobValue =  editDobElement.value;
     this.editNameValue = editNameElement.value;
-    this.editGenderValue = editGenderElement.value;
-    this.editUsnValue = editUsnElement.value; 
+    this.editUsnValue = editUsnElement.value;
+    this.tempGender = this.editGenderValue; 
     //var personalDetails = <HTMLInputElement>document.getElementById('personal');
     var savePadding = <HTMLInputElement>document.getElementById('saveContactPadding');
     //var editPadding = <HTMLInputElement>document.getElementById('editContactPadding');
@@ -64,7 +66,7 @@ export class PostsComponent implements OnInit {
     editContactElement.removeAttribute('disabled');
     editDobElement.removeAttribute('disabled');
     editNameElement.removeAttribute('disabled');
-    editGenderElement.removeAttribute('disabled');
+    editGenderElement.style.pointerEvents='all';
     editUsnElement.removeAttribute('disabled');
     //console.log("edit");
     /*editButtonPersonal.onclick=function(){
@@ -88,7 +90,7 @@ export class PostsComponent implements OnInit {
         var saveContactElement = <HTMLInputElement>document.getElementById('editButtonContact');
         var saveDobElement = <HTMLInputElement>document.getElementById('editButtonDob');
         var saveNameElement = <HTMLInputElement>document.getElementById('editButtonName');
-        var saveGenderElement = <HTMLInputElement>document.getElementById('editButtonGender');
+        var saveGenderElement = <HTMLInputElement>document.getElementById('editDivGender');
         var saveUsnElement = <HTMLInputElement>document.getElementById('editButtonUsn');
         var editButtonPersonal = <HTMLInputElement>document.getElementById('editButtonDetails');
         var saveButtonPersonal = <HTMLInputElement>document.getElementById('saveButtonDetails');
@@ -104,14 +106,14 @@ export class PostsComponent implements OnInit {
         saveContactElement.setAttribute('disabled','disabled');
         saveDobElement.setAttribute('disabled','disabled');
         saveNameElement.setAttribute('disabled','disabled');
-        saveGenderElement.setAttribute('disabled','disabled');
+        saveGenderElement.style.pointerEvents='none';
         saveUsnElement.setAttribute('disabled','disabled');
   }
   public cancelContact():void{
         var cancelContactElement = <HTMLInputElement>document.getElementById('editButtonContact');
         var cancelDobElement = <HTMLInputElement>document.getElementById('editButtonDob');
         var cancelNameElement = <HTMLInputElement>document.getElementById('editButtonName');
-        var cancelGenderElement = <HTMLInputElement>document.getElementById('editButtonGender');
+        var cancelGenderElement = <HTMLInputElement>document.getElementById('editDivGender');
         var cancelUsnElement = <HTMLInputElement>document.getElementById('editButtonUsn');
         var editButtonPersonal = <HTMLInputElement>document.getElementById('editButtonDetails');
         var saveButtonPersonal = <HTMLInputElement>document.getElementById('saveButtonDetails');
@@ -127,13 +129,14 @@ export class PostsComponent implements OnInit {
         //console.log(this.editContactValue);
         cancelDobElement.value = this.editDobValue;
         cancelNameElement.value = this.editNameValue;
-        cancelGenderElement.value = this.editGenderValue;
+        //cancelGenderElement.value = this.editGenderValue;
+        this.editGenderValue= this.tempGender;
         cancelUsnElement.value = this.editUsnValue;
         savePadding.style.paddingRight="0%";
         cancelContactElement.setAttribute('disabled','disabled');
         cancelDobElement.setAttribute('disabled','disabled');
         cancelNameElement.setAttribute('disabled','disabled');
-        cancelGenderElement.setAttribute('disabled','disabled');
+        cancelGenderElement.style.pointerEvents='all';
         cancelUsnElement.setAttribute('disabled','disabled');
   }
   public editInterests():void{
