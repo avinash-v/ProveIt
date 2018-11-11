@@ -5,15 +5,8 @@ import { CommonModule } from '@angular/common';
 import { MainRoutingModule } from './main-routing.module';
 
 // tslint:disable-next-line:max-line-length
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule,NbSelectModule} from '@nebular/theme';
-=======
-import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule, NbSpinnerModule} from '@nebular/theme';
->>>>>>> 34798dd61fb23c26ea631c9e645faccc943b48cc
-=======
-import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule, NbSpinnerModule} from '@nebular/theme';
->>>>>>> 34798dd61fb23c26ea631c9e645faccc943b48cc
+
+import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule, NbSpinnerModule, NbSelectModule} from '@nebular/theme';
 
 import { PostsComponent } from './posts/posts.component';
 import { MainComponent } from './main.component';
@@ -40,20 +33,10 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
     NbContextMenuModule,
     NbButtonModule,
     NbInputModule,
-<<<<<<< HEAD
-<<<<<<< HEAD
     NbSelectModule,
-    HttpClientModule
-=======
     HttpClientModule,
     AngularFileUploaderModule,
-    NbSpinnerModule
->>>>>>> 34798dd61fb23c26ea631c9e645faccc943b48cc
-=======
-    HttpClientModule,
-    AngularFileUploaderModule,
-    NbSpinnerModule
->>>>>>> 34798dd61fb23c26ea631c9e645faccc943b48cc
+    NbSpinnerModule,
   ],
   providers: [ NbSidebarService, NbMenuService, GetPostService ],
   declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent]
