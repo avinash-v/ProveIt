@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { NbMenuService } from '@nebular/theme';
 import { Router , NavigationStart, NavigationEnd} from '@angular/router';
+import { NbAuthService, NbAuthSimpleToken } from '@nebular/auth';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -8,7 +9,10 @@ import { Router , NavigationStart, NavigationEnd} from '@angular/router';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  items = [{ title: 'Profile', link: ['/profile']}, {title : 'Logout', link: ['']}];
+  user = 'Anonymous';
+  login_items = [{ title: 'Profile', link: ['/profile']}, {title : 'Logout', link: ['']}];
+  unlogin_items = [{ title: 'Login', link: ['../auth/login']}];
+  items = this.unlogin_items;
   loading = false;
   item_menu = [
     {
@@ -38,7 +42,18 @@ export class MainComponent implements OnInit {
       link: [],
     },
   ];
-  constructor(private menuService: NbMenuService,router: Router) {
+  constructor(private menuService: NbMenuService,router: Router,private authservice : NbAuthService) {
+    this.authservice.onTokenChange()
+    .subscribe((token: NbAuthSimpleToken) => {
+      if (token.isValid()){
+        this.user = token.getPayload();
+        this.items = this.login_items;
+      }
+      else{
+        this.user = 'Anonymous';
+        this.items = this.unlogin_items;
+      }
+    } )
     router.events.subscribe(event => {
       if(event instanceof NavigationStart){
         this.loading = true;

@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
+import { NbPasswordAuthStrategy, NbAuthModule, NbAuthSimpleToken } from '@nebular/auth';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +28,10 @@ import { Browser } from 'protractor';
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
+          token: {
+            class: NbAuthSimpleToken,
+            key: 'token'
+          }
         }),
       ],
       forms: {},
