@@ -15,7 +15,7 @@ import { Browser } from 'protractor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

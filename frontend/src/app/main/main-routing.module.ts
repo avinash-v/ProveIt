@@ -6,6 +6,7 @@ import { PostComponent } from './post/post.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { GroupsComponent } from './groups/groups.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path : 'groups',
+        component : GroupsComponent
       },
     ]
   }

@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GetPostService } from './get-post.service';
 import { AngularFileUploaderModule } from "angular-file-uploader";
+import { GroupsComponent } from './groups/groups.component';
 
 @NgModule({
   imports: [
@@ -37,8 +38,9 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
     HttpClientModule,
     AngularFileUploaderModule,
     NbSpinnerModule,
+    NbListModule,
   ],
   providers: [ NbSidebarService, NbMenuService, GetPostService ],
-  declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent]
+  declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent, GroupsComponent]
 })
 export class MainModule { }

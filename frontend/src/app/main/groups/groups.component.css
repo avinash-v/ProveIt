@@ -48,27 +48,10 @@
 .basicImg:hover .basicImgEdit {
   opacity: 1;
 }
-.basicField{
-  margin: 1vh;
-  float: left;
-  font-family: sans-serif;
-  font-weight: bold;
+.userslist {
+  width: 30%;
+  float: right;
 }
-.edit_save{
-  float: left;
-  padding-top: 3.5vh;
-}
-
-.edit{
-  float: left; 
-  padding-top: 3.5vh
-}
-
-[nbButton]:hover{
-  cursor: pointer;
-}
-
-.selectList{
-  font-family: sans-serif;
-  font-weight: 
+#nb-user-card {
+  height: 32vh;
 }
