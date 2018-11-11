@@ -46,3 +46,22 @@
 .basicImg:hover .basicImgEdit {
   opacity: 1;
 }
+.basicField{
+  margin: 1%;
+  float: left;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.edit_save{
+  float: left;
+  padding-top: 2%;
+}
+
+[nbButton]:hover{
+  cursor: pointer;
+}
+
+.selectList{
+  font-family: sans-serif;
+  font-weight: 
+}
