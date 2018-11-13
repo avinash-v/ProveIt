@@ -26,10 +26,13 @@
       		</nb-list>
 		</nb-card>
 		</div>
-        <div style="margin: 1vh; float: left; font-family: sans-serif; font-weight: bold;">Description</div></div>
-        <div id="saveBioPadding" style="float: left; padding-top: 2vh;"><a style="visibility: hidden; display: none" id="saveButtonData" (click)="saveBio()" nbButton>Save</a></div>
-        <div style="float: left; padding-top: 2vh"><a style="visibility: hidden; display: none" id="cancelButtonData" (click)="cancelBio()" nbButton>Cancel</a></div>
-        <div id="editBioPadding" style="float: left; padding-right: 5vh; padding-top: 2vh"><a style="display: inline" id="editButtonData" (click)="editBio()" nbButton>Edit</a></div>
+        <div class= basicField>Description</div></div>
+        <div id="saveBioPadding" class="edit_save"><a style="visibility: hidden; display: none" id="saveButtonData" (click)="saveBio()" nbButton>Save</a></div>
+        <div class="edit_save"><a style="visibility: hidden; display: none" id="cancelButtonData" (click)="cancelBio()" nbButton>Cancel</a></div>
+        <div id="editBioPadding" class="edit"><a style="display: inline" id="editButtonData" (click)="editBio()" nbButton>Edit</a></div>
+        <!--<input type="text" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%">
+        <div style="float: right"><a (click)="saveBio()" nbButton>Save</a></div>
+        <div style="float: right; padding-right: 5%"><a (click)="editBio()" nbButton>Edit</a></div>-->
       </nb-tab>
 
     </nb-tabset>
