@@ -12,7 +12,7 @@ const routes: Routes = [
     path : '' , component : MainComponent,
     children : [
       {
-        path : 'posts',
+        path : 'posts/:id',
         component : PostComponent
       },
       {

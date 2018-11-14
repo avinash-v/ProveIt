@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
       children: [
         {
           title: 'SE Research Group',
-          link: ['/posts'], // goes into angular `routerLink`
+          link: ['/posts/'+ group_id], // goes into angular `routerLink`
         }
       ],
     },
@@ -33,7 +33,7 @@ export class MainComponent implements OnInit {
       children: [
         {
           title: 'SE Project Group',
-          link : ['/posts'],
+          link : ['/posts/' + project_id], //goes into angular routerLink, check this
         }
       ],
     },
@@ -41,7 +41,7 @@ export class MainComponent implements OnInit {
       title: 'Reimbursements',
       link: [],
     },
-  ];
+  ]; //item menu update this
   constructor(private menuService: NbMenuService,router: Router,private authservice : NbAuthService) {
     this.authservice.onTokenChange()
     .subscribe((token: NbAuthSimpleToken) => {

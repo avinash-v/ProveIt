@@ -9,8 +9,8 @@ import { map } from 'rxjs/operators';
 )
 export class GetPostService {
   constructor(private http: HttpClient) { }
-  getPosts() {
+  getPosts(id) {
     //this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(data => console.log(data));
-    return this.http.get('https://jsonplaceholder.typicode.com/posts');
+    return this.http.get('https://jsonplaceholder.typicode.com/posts/'+id);
   }
 }
