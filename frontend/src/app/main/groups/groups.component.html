@@ -1,0 +1,47 @@
+<nb-card>
+  <nb-card-body>
+    <div class="basicDetails">
+      <div class="basicImg">
+        <img class="profilePicture" src="{{user.picture}}" alt="profile picture" align="left" />
+        <div class="basicImgEdit"><button nbButton>Edit</button></div>
+      </div>
+      <nb-card class="basicRight">
+          <b>Groups Name: {{user.name}}<p><p>Email: {{user.email}}</b>
+      </nb-card>
+    </div>
+    <nb-tabset>
+      <nb-tab tabTitle="About Group">
+        <div style="padding-top: 1vh">
+        <textarea rows="16" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="CCBD" style="width: 60%;"></textarea>
+        <div class="userslist">
+        <nb-card size="small" id="nb-user-card">
+        	<nb-card-header>
+        		Members
+      		</nb-card-header>
+      		<nb-list>
+        		<nb-list-item *ngFor="let user of users">
+          			<nb-user [name]="user.name" [title]="user.title">
+        			</nb-user>
+        		</nb-list-item>
+      		</nb-list>
+		</nb-card>
+		</div>
+        <div class= basicField>Description</div></div>
+        <div id="saveBioPadding" class="edit_save"><a style="visibility: hidden; display: none" id="saveButtonData" (click)="saveBio()" nbButton>Save</a></div>
+        <div class="edit_save"><a style="visibility: hidden; display: none" id="cancelButtonData" (click)="cancelBio()" nbButton>Cancel</a></div>
+        <div id="editBioPadding" class="edit"><a style="display: inline" id="editButtonData" (click)="editBio()" nbButton>Edit</a></div>
+        <!--<input type="text" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%">
+        <div style="float: right"><a (click)="saveBio()" nbButton>Save</a></div>
+        <div style="float: right; padding-right: 5%"><a (click)="editBio()" nbButton>Edit</a></div>-->
+      </nb-tab>
+
+    </nb-tabset>
+
+  </nb-card-body>
+
+  
+</nb-card>
+
+
+
+

@@ -6,7 +6,7 @@
         <div class="basicImgEdit"><button nbButton>Edit</button></div>
       </div>
       <nb-card class="basicRight">
-          <b>Name: {{user.name}}<p>Email: {{user.email}}</b>
+          <b>Name: {{user.name}}<p><p>Email: {{user.email}}</b>
       </nb-card>
     </div>
     <nb-tabset>
@@ -15,7 +15,7 @@
         <input type="text" id="editButtonName" disabled nbInput shape="rectangle" placeholder="Erica" style="width: 30%;margin-left: 4.3vh">
         <div class= basicField>Full Name</div></div>
       <div style="padding-top: 1%">
-        <input type="text" id="editButtonContact" disabled nbInput shape="rectangle" placeholder="9876789876" style="width: 30%" >
+        <input type="text" id="editButtonContact" disabled nbInput shape="rectangle" placeholder="9876789876" style="width: 30%; margin-left: 0.5vh;" >
       <div class= basicField>Phone Number</div></div>
         <div style="padding-top: 1%">
         <input type="text" id="editButtonDob" disabled nbInput shape="rectangle" placeholder="16/06/1997" style="width: 30%;margin-left: 2vh">
@@ -23,7 +23,7 @@
         <div style="padding-top: 1%">
         <div class= basicField>Gender</div>
         <div style="pointer-events: none" id="editDivGender">
-            <nb-select  placeholder="Select Gender" [(selected)]="editGenderValue" style="width:30%; margin-left: 16.5vh">
+            <nb-select  placeholder="Select Gender" [(selected)]="editGenderValue" style="width:30%; margin-left: 14vh">
               <nb-option class="selectList" value="M">MALE</nb-option>
               <nb-option class="selectList" value="F">FEMALE</nb-option>
               <nb-option class="selectList" value="O">OTHER</nb-option>
@@ -32,11 +32,11 @@
 
         </div>
         <div style="padding-top: 1%">
-        <input type="text" id="editButtonUsn" disabled nbInput shape="rectangle" placeholder="01FB15ECS020" style="width: 30%; margin-left: 9.1vh">
+        <input type="text" id="editButtonUsn" disabled nbInput shape="rectangle" placeholder="01FB15ECS020" style="width: 30%; margin-left: 8.5vh">
         <div class= basicField>USN</div></div>
-        <div id="saveContactPadding" class="edit_save" style="margin-left: 5.8%"><a style="visibility: hidden; display: none" id="saveButtonDetails" (click)="saveContact()" nbButton>Save</a></div>
-        <div style="float: left; padding-top: 2%"><a style="visibility: hidden; display: none" id="cancelButtonDetails" (click)="cancelContact()" nbButton>Cancel</a></div>
-        <div id="editContactPadding" style="float: left; padding-right: 5%; padding-top: 2%"><a style="display: inline" id="editButtonDetails" (click)="editContact()" nbButton>Edit</a></div>
+        <div id="saveContactPadding" class="edit_save"><a style="visibility: hidden; display: none" id="saveButtonDetails" (click)="saveContact()" nbButton>Save</a></div>
+        <div class="edit_save"><a style="visibility: hidden; display: none" id="cancelButtonDetails" (click)="cancelContact()" nbButton>Cancel</a></div>
+        <div id="editContactPadding" class="edit"><a style="display: inline" id="editButtonDetails" (click)="editContact()" nbButton>Edit</a></div>
       </nb-tab>
 
 
@@ -46,12 +46,12 @@
         <textarea rows="6" id="ButtonInterests" disabled nbInput shape="rectangle" placeholder="Interested in Data Science" style="width: 60%"></textarea>
         <div class= basicField>Interests</div></div>
         <div style="padding-top: 1.7%">
-        <textarea rows="5" id="ButtonSkills" disabled nbInput shape="rectangle" placeholder="Basics in C" style=" width:60%;margin-left: 3vh"></textarea>
+        <textarea rows="6" id="ButtonSkills" disabled nbInput shape="rectangle" placeholder="Basics in C" style=" width:60%;margin-left: 2.5vh"></textarea>
         <div class= basicField>Skills</div></div>
         <!--<input type="text" id="editButtonInterests" disabled nbInput shape="rectangle" placeholder="Interested in Data Science" style="width: 60%">-->
         <div id="saveInterestsPadding" class="edit_save" ><a style="visibility: hidden; display: none" id="saveButtonSkills" (click)="saveInterests()" nbButton>Save</a></div>
-        <div style="float: left; padding-top: 2%"><a style="visibility: hidden; display: none" id="cancelButtonSkills" (click)="cancelInterests()" nbButton>Cancel</a></div>
-        <div id="editInterestsPadding" style="float: left; padding-right: 5%; padding-top: 2%"><a style="display: inline" id="editButtonSkills" (click)="editInterests()" nbButton>Edit</a></div>
+        <div class="edit_save"><a style="visibility: hidden; display: none" id="cancelButtonSkills" (click)="cancelInterests()" nbButton>Cancel</a></div>
+        <div id="editInterestsPadding" class="edit"><a style="display: inline" id="editButtonSkills" (click)="editInterests()" nbButton>Edit</a></div>
         <!--<div style="float: right"><a (click)="saveInterests()" nbButton>Save</a></div>
         <div style="float: right; padding-right: 5%"><a (click)="editInterests()" nbButton>Edit</a></div>-->
         <!--</div>-->
@@ -66,7 +66,7 @@
         <div class= basicField>Bio</div></div>
         <div id="saveBioPadding" class="edit_save"><a style="visibility: hidden; display: none" id="saveButtonData" (click)="saveBio()" nbButton>Save</a></div>
         <div class="edit_save"><a style="visibility: hidden; display: none" id="cancelButtonData" (click)="cancelBio()" nbButton>Cancel</a></div>
-        <div id="editBioPadding" style="float: left; padding-right: 5%; padding-top: 2%"><a style="display: inline" id="editButtonData" (click)="editBio()" nbButton>Edit</a></div>
+        <div id="editBioPadding" class="edit"><a style="display: inline" id="editButtonData" (click)="editBio()" nbButton>Edit</a></div>
         <!--<input type="text" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%">
         <div style="float: right"><a (click)="saveBio()" nbButton>Save</a></div>
         <div style="float: right; padding-right: 5%"><a (click)="editBio()" nbButton>Edit</a></div>-->

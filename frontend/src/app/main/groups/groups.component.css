@@ -48,6 +48,14 @@
 .basicImg:hover .basicImgEdit {
   opacity: 1;
 }
+.userslist {
+  width: 30%;
+  float: right;
+}
+#nb-user-card {
+  height: 32vh;
+}
+
 .basicField{
   margin: 1vh;
   float: left;
@@ -66,9 +74,4 @@
 
 [nbButton]:hover{
   cursor: pointer;
-}
-
-.selectList{
-  font-family: sans-serif;
-  font-weight: 
 }

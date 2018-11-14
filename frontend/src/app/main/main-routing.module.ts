@@ -8,6 +8,7 @@ import { MainComponent } from './main.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { MakeGroupComponent } from './make-group/make-group.component';
 import { MakeProjectComponent } from './make-project/make-project.component';
+import { GroupsComponent } from './groups/groups.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
       {
         path: 'makeProject',
         component: MakeProjectComponent
+      },
+      {
+        path : 'groups',
+        component : GroupsComponent
       },
     ]
   }
