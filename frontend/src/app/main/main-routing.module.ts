@@ -6,6 +6,8 @@ import { PostComponent } from './post/post.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { MakeGroupComponent } from './make-group/make-group.component';
+import { MakeProjectComponent } from './make-project/make-project.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,14 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent
+      },
+      {
+        path: 'makeGroup',
+        component: MakeGroupComponent
+      },
+      {
+        path: 'makeProject',
+        component: MakeProjectComponent
       },
     ]
   }

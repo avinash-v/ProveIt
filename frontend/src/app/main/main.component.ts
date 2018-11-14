@@ -14,6 +14,8 @@ export class MainComponent implements OnInit {
   unlogin_items = [{ title: 'Login', link: ['../auth/login']}];
   items = this.unlogin_items;
   loading = false;
+  group_id= 12434;
+  project_id= 12542;
   item_menu = [
     {
       title: 'Groups',
@@ -22,7 +24,11 @@ export class MainComponent implements OnInit {
       children: [
         {
           title: 'SE Research Group',
-          link: ['/posts/'+ group_id], // goes into angular `routerLink`
+          link: ['/posts/'+ this.group_id], // goes into angular `routerLink`
+        },
+        {
+          title: 'Make a new Group',
+          link: '/makeGroup'
         }
       ],
     },
@@ -33,7 +39,11 @@ export class MainComponent implements OnInit {
       children: [
         {
           title: 'SE Project Group',
-          link : ['/posts/' + project_id], //goes into angular routerLink, check this
+          link : ['/posts/' + this.project_id], //goes into angular routerLink, check this
+        },
+        {
+          title: 'Make a new Project',
+          link: '/makeProject'
         }
       ],
     },
