@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NbSidebarService } from '@nebular/theme';
 import { UserService } from "../user.service";
 import { User } from "../user";
+import { GetImageService } from '../get-image.service';
 
 @Component({
   selector: 'app-posts',
@@ -17,7 +18,8 @@ export class PostsComponent implements OnInit {
     name: "Alk",
     email: "test@test.com",
 };
-
+  imageProfile: any;
+  isImageLoading: boolean;
   public editContactValue: string;
   public editDobValue: string;
   public editNameValue: string;
@@ -29,14 +31,39 @@ export class PostsComponent implements OnInit {
   public tempGender: string;
 
   constructor(
-    private sidebar: NbSidebarService) { }
+    private sidebar: NbSidebarService,
+    private imageloader: GetImageService,
+    private ref: ChangeDetectorRef) { }
 
   posts: any;
 
   ngOnInit() {
     this.sidebar.expand();
+    this.getImageFromService();
   }
 
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+       this.imageProfile = reader.result;
+       console.log("read done");
+       this.ref.markForCheck();
+    }, false);
+ 
+    if (image) {
+       reader.readAsDataURL(image);
+    }
+ }
+ getImageFromService() {
+  this.isImageLoading = true;
+  this.imageloader.getImage("https://i.imgur.com/fHyEMsl.jpg").subscribe(data => {
+    this.createImageFromBlob(data);
+    this.isImageLoading = false;
+  }, error => {
+    this.isImageLoading = false;
+    console.log(error);
+  });
+}
   public editContact():void{
     var editContactElement = <HTMLInputElement>document.getElementById('editButtonContact');
     var editDobElement = <HTMLInputElement>document.getElementById('editButtonDob');

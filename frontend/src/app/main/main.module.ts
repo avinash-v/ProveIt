@@ -20,6 +20,7 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
 import { MakeProjectComponent } from './make-project/make-project.component';
 import { MakeGroupComponent } from './make-group/make-group.component';
 import { GroupsComponent } from './groups/groups.component';
+import { GetImageService } from './get-image.service';
 
 @NgModule({
   imports: [
@@ -42,7 +43,7 @@ import { GroupsComponent } from './groups/groups.component';
     NbSpinnerModule,
     NbListModule,
   ],
-  providers: [ NbSidebarService, NbMenuService, GetPostService ],
+  providers: [ NbSidebarService, NbMenuService, GetPostService , GetImageService],
   declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent, MakeProjectComponent, MakeGroupComponent, GroupsComponent]
 })
 export class MainModule { }

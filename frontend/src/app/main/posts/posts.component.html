@@ -2,7 +2,7 @@
   <nb-card-body>
     <div class="basicDetails">
       <div class="basicImg">
-        <img class="profilePicture" src="{{user.picture}}" alt="profile picture" align="left" />
+        <img class="profilePicture" [src]="imageProfile" [nbSpinner]="isImageLoading" alt="profile picture" align="left" />
         <div class="basicImgEdit"><button nbButton>Edit</button></div>
       </div>
       <nb-card class="basicRight">
