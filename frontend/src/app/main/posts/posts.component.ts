@@ -1,7 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { HttpLinkService } from '../../http-link.service';
 import { NbSidebarService } from '@nebular/theme';
 import { UserService } from "../user.service";
 import { User } from "../user";
+import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { GetImageService } from '../get-image.service';
 
 @Component({
   selector: 'app-posts',
@@ -17,38 +20,82 @@ export class PostsComponent implements OnInit {
     name: "Alk",
     email: "test@test.com",
 };
+  imageProfile: any;
+  isImageLoading: boolean;
 
+  public editInterestsValue;
   public editContactValue: string;
   public editDobValue: string;
-  public editNameValue: string;
-  public editGenderValue: string;
-  public editUsnValue: string;
-  public editInterestsValue: string;
-  public editSkillsValue: string;
+  public editFNameValue: string;
+  public editLNameValue: string;
+  public editUserTypeValue;
+  public editUsnValue: number;
   public editBioValue: string;
-  public tempGender: string;
+  public editSkillsValue: string;
+  public tempUserType: string;
+  public editUNameValue: string;
 
   constructor(
-    private sidebar: NbSidebarService) { }
+    private sidebar: NbSidebarService,
+    public rest:HttpLinkService,
+    private imageloader: GetImageService,
+    private ref: ChangeDetectorRef) { }
 
   posts: any;
 
   ngOnInit() {
     this.sidebar.expand();
+    this.getImageFromService();
   }
 
+  public postProfile(): void {
+    var profileData = {"username":this.editUNameValue,"collegeId":this.editUsnValue, "firstName":this.editFNameValue, "lastName":this.editLNameValue, "contact":this.editContactValue, "userId":localStorage.getItem("userId"),"userType":"student" ,"bio":"studd","interests" : "Definitely not SE","skills":"not good at anything"}
+
+    this.rest.postData("http://127.0.0.1:5555/profile",profileData).subscribe((data : {}) => {
+      console.log(data);
+    });
+  }
+
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+       this.imageProfile = reader.result;
+       console.log("read done");
+       this.ref.markForCheck();
+    }, false);
+ 
+    if (image) {
+       reader.readAsDataURL(image);
+    }
+ }
+ getImageFromService() {
+  this.isImageLoading = true;
+  this.imageloader.getImage("https://i.imgur.com/fHyEMsl.jpg").subscribe(data => {
+    this.createImageFromBlob(data);
+    this.isImageLoading = false;
+  }, error => {
+    this.isImageLoading = false;
+    console.log(error);
+  });
+}
   public editContact():void{
     var editContactElement = <HTMLInputElement>document.getElementById('editButtonContact');
     var editDobElement = <HTMLInputElement>document.getElementById('editButtonDob');
-    var editNameElement = <HTMLInputElement>document.getElementById('editButtonName');
-    var editGenderElement = <HTMLInputElement>document.getElementById('editDivGender');
+    var editFNameElement = <HTMLInputElement>document.getElementById('editButtonFName');
+    var editLNameElement = <HTMLInputElement>document.getElementById('editButtonLName');
+    var editUNameElement = <HTMLInputElement>document.getElementById('editButtonUName');
+
+    var editUserTypeElement = <HTMLInputElement>document.getElementById('editDivUserType');
     var editUsnElement = <HTMLInputElement>document.getElementById('editButtonUsn');
     this.editContactValue = editContactElement.value;
     //console.log(this.editContactValue);
     this.editDobValue =  editDobElement.value;
-    this.editNameValue = editNameElement.value;
-    this.editUsnValue = editUsnElement.value;
-    this.tempGender = this.editGenderValue; 
+    this.editFNameValue = editFNameElement.value;
+    this.editLNameValue = editLNameElement.value;
+    this.editUNameValue = editUNameElement.value;
+
+    // this.editUsnValue = editUsnElement.value;
+    this.tempUserType = this.editUserTypeValue; 
     //var personalDetails = <HTMLInputElement>document.getElementById('personal');
     var savePadding = <HTMLInputElement>document.getElementById('saveContactPadding');
     //var editPadding = <HTMLInputElement>document.getElementById('editContactPadding');
@@ -56,6 +103,7 @@ export class PostsComponent implements OnInit {
     var saveButtonPersonal = <HTMLInputElement>document.getElementById('saveButtonDetails');
     var cancelButtonPersonal = <HTMLInputElement>document.getElementById('cancelButtonDetails');
     //editButtonPersonal.innerHTML = "Save";
+
     editButtonPersonal.style.visibility = "hidden";
     editButtonPersonal.style.display = "none";
     cancelButtonPersonal.style.visibility = "visible";
@@ -65,9 +113,13 @@ export class PostsComponent implements OnInit {
     savePadding.style.paddingRight="5%";
     editContactElement.removeAttribute('disabled');
     editDobElement.removeAttribute('disabled');
-    editNameElement.removeAttribute('disabled');
-    editGenderElement.style.pointerEvents='all';
+    editFNameElement.removeAttribute('disabled');
+    editLNameElement.removeAttribute('disabled');
+    editUNameElement.removeAttribute('disabled');
+
+    editUserTypeElement.style.pointerEvents='all';
     editUsnElement.removeAttribute('disabled');
+
     //console.log("edit");
     /*editButtonPersonal.onclick=function(){
         console.log("called");
@@ -89,13 +141,17 @@ export class PostsComponent implements OnInit {
   public saveContact():void{
         var saveContactElement = <HTMLInputElement>document.getElementById('editButtonContact');
         var saveDobElement = <HTMLInputElement>document.getElementById('editButtonDob');
-        var saveNameElement = <HTMLInputElement>document.getElementById('editButtonName');
-        var saveGenderElement = <HTMLInputElement>document.getElementById('editDivGender');
+        var saveFNameElement = <HTMLInputElement>document.getElementById('editButtonFName');
+        var saveLNameElement = <HTMLInputElement>document.getElementById('editButtonLName');
+        var saveUNameElement = <HTMLInputElement>document.getElementById('editButtonUName');
+
+        var saveUserTypeElement = <HTMLInputElement>document.getElementById('editDivUserType');
         var saveUsnElement = <HTMLInputElement>document.getElementById('editButtonUsn');
         var editButtonPersonal = <HTMLInputElement>document.getElementById('editButtonDetails');
         var saveButtonPersonal = <HTMLInputElement>document.getElementById('saveButtonDetails');
         var cancelButtonPersonal = <HTMLInputElement>document.getElementById('cancelButtonDetails');
         var savePadding = <HTMLInputElement>document.getElementById('saveContactPadding');
+        console.log(this.editFNameValue)
         editButtonPersonal.style.visibility = "visible";
         editButtonPersonal.style.display = "inline";
         cancelButtonPersonal.style.visibility = "hidden";
@@ -105,15 +161,25 @@ export class PostsComponent implements OnInit {
         savePadding.style.paddingRight="0%";
         saveContactElement.setAttribute('disabled','disabled');
         saveDobElement.setAttribute('disabled','disabled');
-        saveNameElement.setAttribute('disabled','disabled');
-        saveGenderElement.style.pointerEvents='none';
+        saveFNameElement.setAttribute('disabled','disabled');
+        saveLNameElement.setAttribute('disabled','disabled');
+
+        saveUserTypeElement.style.pointerEvents='none';
         saveUsnElement.setAttribute('disabled','disabled');
-  }
+
+        this.postProfile();
+
+    }
+
+
   public cancelContact():void{
         var cancelContactElement = <HTMLInputElement>document.getElementById('editButtonContact');
         var cancelDobElement = <HTMLInputElement>document.getElementById('editButtonDob');
-        var cancelNameElement = <HTMLInputElement>document.getElementById('editButtonName');
-        var cancelGenderElement = <HTMLInputElement>document.getElementById('editDivGender');
+        var cancelFNameElement = <HTMLInputElement>document.getElementById('editButtonFName');
+        var cancelLNameElement = <HTMLInputElement>document.getElementById('editButtonLName');
+        var cancelUNameElement = <HTMLInputElement>document.getElementById('editButtonUName');
+        
+        var cancelUserTypeElement = <HTMLInputElement>document.getElementById('editDivUserType');
         var cancelUsnElement = <HTMLInputElement>document.getElementById('editButtonUsn');
         var editButtonPersonal = <HTMLInputElement>document.getElementById('editButtonDetails');
         var saveButtonPersonal = <HTMLInputElement>document.getElementById('saveButtonDetails');
@@ -128,15 +194,21 @@ export class PostsComponent implements OnInit {
         cancelContactElement.value = this.editContactValue;
         //console.log(this.editContactValue);
         cancelDobElement.value = this.editDobValue;
-        cancelNameElement.value = this.editNameValue;
-        //cancelGenderElement.value = this.editGenderValue;
-        this.editGenderValue= this.tempGender;
-        cancelUsnElement.value = this.editUsnValue;
+        cancelFNameElement.value = this.editFNameValue;
+        cancelLNameElement.value = this.editLNameValue;
+        cancelUNameElement.value = this.editUNameValue;
+
+        //cancelUserTypeElement.value = this.editUserTypeValue;
+        this.editUserTypeValue= this.tempUserType;
+        //cancelUsnElement.value = this.editUsnValue;
         savePadding.style.paddingRight="0%";
         cancelContactElement.setAttribute('disabled','disabled');
         cancelDobElement.setAttribute('disabled','disabled');
-        cancelNameElement.setAttribute('disabled','disabled');
-        cancelGenderElement.style.pointerEvents='all';
+        cancelFNameElement.setAttribute('disabled','disabled');
+        cancelLNameElement.setAttribute('disabled','disabled');
+        cancelUNameElement.setAttribute('disabled','disabled');
+
+        cancelUserTypeElement.style.pointerEvents='all';
         cancelUsnElement.setAttribute('disabled','disabled');
   }
   public editInterests():void{
@@ -215,10 +287,10 @@ export class PostsComponent implements OnInit {
     saveButtonBio.style.visibility = "visible";
     saveButtonBio.style.display = "inline";
     savePadding.style.paddingRight="5%";
-    //editBioElement.removeAttribute('disabled');
-    var inputbox = document.createElement("textarea");
-    inputbox.setAttribute('nbInput','nbInput');
-    editBioElement.replaceWith(inputbox)
+    editBioElement.removeAttribute('disabled');
+    //var inputbox = document.createElement("textarea");
+    //inputbox.setAttribute('nbInput','nbInput');
+    //editBioElement.replaceWith(inputbox)
   }
   public saveBio():void{
         var saveBioElement = <HTMLInputElement>document.getElementById('editButtonBio');

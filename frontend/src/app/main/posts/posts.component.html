@@ -2,7 +2,7 @@
   <nb-card-body>
     <div class="basicDetails">
       <div class="basicImg">
-        <img class="profilePicture" src="{{user.picture}}" alt="profile picture" align="left" />
+        <img class="profilePicture" [src]="imageProfile" [nbSpinner]="isImageLoading" alt="profile picture" align="left" />
         <div class="basicImgEdit"><button nbButton>Edit</button></div>
       </div>
       <nb-card class="basicRight">
@@ -12,29 +12,45 @@
     <nb-tabset>
       <nb-tab tabTitle="Personal Details" id="personal">
         <div style="padding-top: 1%">
-        <input type="text" id="editButtonName" disabled nbInput shape="rectangle" placeholder="Erica" style="width: 30%;margin-left: 4.3vh">
-        <div class= basicField>Full Name</div></div>
+        <input type="text" id="editButtonUName" disabled nbInput shape="rectangle" placeholder="Erica" style="width: 30%;margin-left: 4.3vh" [ngModel]="editUNameValue" (ngModelChange)="editUNameValue=$event">
+        
+          <div class= basicField>User Name</div>
+          </div>  
+
       <div style="padding-top: 1%">
-        <input type="text" id="editButtonContact" disabled nbInput shape="rectangle" placeholder="9876789876" style="width: 30%; margin-left: 0.5vh;" >
+        <input type="text" id="editButtonFName" disabled nbInput shape="rectangle" placeholder="Erica" style="width: 30%;margin-left: 4.3vh" [ngModel]="editFNameValue" (ngModelChange)="editFNameValue=$event">
+        <div class= basicField>First Name</div>
+          </div>
+        
+
+
+    <div style="padding-top: 1%">
+
+        <input type="text" id="editButtonLName" disabled nbInput shape="rectangle" placeholder="Smith" style="width: 30%;margin-left: 4.3vh" [ngModel]="editLNameValue" (ngModelChange)="editLNameValue=$event">
+        <div class= basicField>Last Name</div>
+      </div>
+
+      <div style="padding-top: 1%">
+        <input type="text" id="editButtonContact" disabled nbInput shape="rectangle" placeholder="9876789876" style="width: 30%; margin-left: 0.5vh" [ngModel]="editContactValue" (ngModelChange)="editContactValue=$event" >
       <div class= basicField>Phone Number</div></div>
         <div style="padding-top: 1%">
-        <input type="text" id="editButtonDob" disabled nbInput shape="rectangle" placeholder="16/06/1997" style="width: 30%;margin-left: 2vh">
+        <input type="text" id="editButtonDob" disabled nbInput shape="rectangle" placeholder="16/06/1997" style="width: 30%;margin-left: 2.5vh" [ngModel]="editDobValue" (ngModelChange)="editDobValue=$event">
         <div class= basicField>Date Of Birth</div></div>
         <div style="padding-top: 1%">
-        <div class= basicField>Gender</div>
-        <div style="pointer-events: none" id="editDivGender">
-            <nb-select  placeholder="Select Gender" [(selected)]="editGenderValue" style="width:30%; margin-left: 14vh">
-              <nb-option class="selectList" value="M">MALE</nb-option>
-              <nb-option class="selectList" value="F">FEMALE</nb-option>
-              <nb-option class="selectList" value="O">OTHER</nb-option>
+        <div class= basicField>User Type</div>
+        <div style="pointer-events: none" id="editDivUserType">
+            <nb-select  placeholder="Select User Type" [(selected)]="editUserType" style="width:30%; margin-left: 16.5vh">
+              <nb-option class="selectList" value="student">Student</nb-option>
+              <nb-option class="selectList" value="collegeRepresentative">College Representative</nb-option>
+              <nb-option class="selectList" value="faculty">Faculty</nb-option>
             </nb-select>
         </div>
 
         </div>
         <div style="padding-top: 1%">
-        <input type="text" id="editButtonUsn" disabled nbInput shape="rectangle" placeholder="01FB15ECS020" style="width: 30%; margin-left: 8.5vh">
+        <input type="text" id="editButtonUsn" disabled nbInput shape="rectangle" placeholder="01FB15ECS020" style="width: 30%; margin-left: 8.5vh" [ngModel]="editUsnValue" (ngModelChange)="editUsnValue=$event">
         <div class= basicField>USN</div></div>
-        <div id="saveContactPadding" class="edit_save"><a style="visibility: hidden; display: none" id="saveButtonDetails" (click)="saveContact()" nbButton>Save</a></div>
+        <div id="saveContactPadding" class="edit_save" ><a style="visibility: hidden; display: none" id="saveButtonDetails" (click)="saveContact()" nbButton>Save</a></div>
         <div class="edit_save"><a style="visibility: hidden; display: none" id="cancelButtonDetails" (click)="cancelContact()" nbButton>Cancel</a></div>
         <div id="editContactPadding" class="edit"><a style="display: inline" id="editButtonDetails" (click)="editContact()" nbButton>Edit</a></div>
       </nb-tab>
@@ -43,10 +59,10 @@
       <nb-tab tabTitle="Interests and Skills">
         <!--<div style="padding-bottom: 2%">-->
           <div style="padding-top: 1%">
-        <textarea rows="6" id="ButtonInterests" disabled nbInput shape="rectangle" placeholder="Interested in Data Science" style="width: 60%"></textarea>
+        <textarea rows="6" id="ButtonInterests" disabled nbInput shape="rectangle" placeholder="Interested in Data Science" style="width: 60%" [ngModel]="editInterestsValue" (ngModelChange)="editInterestsValue=$event"></textarea>
         <div class= basicField>Interests</div></div>
         <div style="padding-top: 1.7%">
-        <textarea rows="6" id="ButtonSkills" disabled nbInput shape="rectangle" placeholder="Basics in C" style=" width:60%;margin-left: 2.5vh"></textarea>
+        <textarea rows="6" id="ButtonSkills" disabled nbInput shape="rectangle" placeholder="Basics in C" style=" width:60%;margin-left: 2.5vh" [ngModel]="editSkillsValue" (ngModelChange)="editSkillsValue=$event"></textarea>
         <div class= basicField>Skills</div></div>
         <!--<input type="text" id="editButtonInterests" disabled nbInput shape="rectangle" placeholder="Interested in Data Science" style="width: 60%">-->
         <div id="saveInterestsPadding" class="edit_save" ><a style="visibility: hidden; display: none" id="saveButtonSkills" (click)="saveInterests()" nbButton>Save</a></div>
@@ -61,11 +77,9 @@
         <div style="float: right; padding-right: 5%"><a (click)="saveSkills()" nbButton>Save</a></div></div>-->
       </nb-tab>
       <nb-tab tabTitle="Bio">
-        <div style="padding-top: 1%;">
-        <!--<textarea rows="14" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%"></textarea>-->
-
-        <div class= basicField>Bio</div>
-    	<div id="editButtonBio" style="width: 60%; margin-left: 10vh;">Hi</div></div>
+        <div style="padding-top: 1%">
+        <textarea rows="14" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%" [ngModel]="editBioValue" (ngModelChange)="editBioValue=$event"></textarea>
+        <div class= basicField>Bio</div></div>
         <div id="saveBioPadding" class="edit_save"><a style="visibility: hidden; display: none" id="saveButtonData" (click)="saveBio()" nbButton>Save</a></div>
         <div class="edit_save"><a style="visibility: hidden; display: none" id="cancelButtonData" (click)="cancelBio()" nbButton>Cancel</a></div>
         <div id="editBioPadding" class="edit"><a style="display: inline" id="editButtonData" (click)="editBio()" nbButton>Edit</a></div>
@@ -76,6 +90,7 @@
     </nb-tabset>
   </nb-card-body>
 </nb-card>
+
 
 
 

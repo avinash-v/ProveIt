@@ -17,7 +17,12 @@ import { HttpClientModule } from '@angular/common/http';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GetPostService } from './get-post.service';
 import { AngularFileUploaderModule } from "angular-file-uploader";
+import { MakeProjectComponent } from './make-project/make-project.component';
+import { MakeGroupComponent } from './make-group/make-group.component';
 import { GroupsComponent } from './groups/groups.component';
+import { GetImageService } from './get-image.service';
+import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
   imports: [
@@ -39,8 +44,9 @@ import { GroupsComponent } from './groups/groups.component';
     AngularFileUploaderModule,
     NbSpinnerModule,
     NbListModule,
+    FormsModule
   ],
-  providers: [ NbSidebarService, NbMenuService, GetPostService ],
-  declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent, GroupsComponent]
+  providers: [ NbSidebarService, NbMenuService, GetPostService , GetImageService],
+  declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent, MakeProjectComponent, MakeGroupComponent, GroupsComponent]
 })
 export class MainModule { }
