@@ -61,9 +61,11 @@
         <div style="float: right; padding-right: 5%"><a (click)="saveSkills()" nbButton>Save</a></div></div>-->
       </nb-tab>
       <nb-tab tabTitle="Bio">
-        <div style="padding-top: 1%">
-        <textarea rows="14" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%"></textarea>
-        <div class= basicField>Bio</div></div>
+        <div style="padding-top: 1%;">
+        <!--<textarea rows="14" id="editButtonBio" disabled nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%"></textarea>-->
+
+        <div class= basicField>Bio</div>
+    	<div id="editButtonBio" style="width: 60%; margin-left: 10vh;">Hi</div></div>
         <div id="saveBioPadding" class="edit_save"><a style="visibility: hidden; display: none" id="saveButtonData" (click)="saveBio()" nbButton>Save</a></div>
         <div class="edit_save"><a style="visibility: hidden; display: none" id="cancelButtonData" (click)="cancelBio()" nbButton>Cancel</a></div>
         <div id="editBioPadding" class="edit"><a style="display: inline" id="editButtonData" (click)="editBio()" nbButton>Edit</a></div>

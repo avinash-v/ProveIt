@@ -215,7 +215,10 @@ export class PostsComponent implements OnInit {
     saveButtonBio.style.visibility = "visible";
     saveButtonBio.style.display = "inline";
     savePadding.style.paddingRight="5%";
-    editBioElement.removeAttribute('disabled');
+    //editBioElement.removeAttribute('disabled');
+    var inputbox = document.createElement("textarea");
+    inputbox.setAttribute('nbInput','nbInput');
+    editBioElement.replaceWith(inputbox)
   }
   public saveBio():void{
         var saveBioElement = <HTMLInputElement>document.getElementById('editButtonBio');
