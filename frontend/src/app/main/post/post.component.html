@@ -5,22 +5,22 @@
         Make a new post  
       </nb-card-header>
       <nb-card-body>
-        <div class="flexbox"><input nbInput round><button nbButton>Post</button></div>
+        <div class="flexbox"><input nbInput [ngModel]="inputPost" (ngModelChange)="inputPost=$event" round><button nbButton (click)="makePost()">Post</button></div>
       </nb-card-body>
     </nb-card>
     <nb-card *ngIf="postLoadincomplete">
       <nb-card-body [nbSpinner]="postLoadincomplete"></nb-card-body>
     </nb-card>
     <nb-card class="postFormat" *ngFor="let item of posts">
-      <nb-card-header class="postCard"><img class="groupImg" src="{{postInfo.groupPic}}" alt="postimg" /><span class="postCard">{{item.id}}</span></nb-card-header>
+      <nb-card-header class="postCard"><img class="groupImg" src="{{postInfo.groupPic}}" alt="postimg" /><span class="postCard">{{item.name}}</span></nb-card-header>
       <nb-card-body class="postCard">
         <div class="postTitleBar">
-          <span class="postTitle">{{item.title}}</span>
-          <span class="postAuthor"><span class="postBy">posted by: </span>{{item.userId}}</span>
+          <span class="postTitle">{{item.datetime}}</span>
+          <span class="postAuthor"><span class="postBy">posted by: </span>{{item.name}}</span>
         </div>
         <nb-card>
           <nb-card-body>
-            {{item.body}}
+            {{item.content}}
           </nb-card-body>
         </nb-card>
       </nb-card-body>
@@ -35,6 +35,10 @@
         <span>This is a document box</span>
       </nb-card-body>
     </nb-card>
+
+    <angular-file-uploader [config] = "afuConfig" style="margin-left: -1%">
+    </angular-file-uploader>
+
   </nb-tab>
   <nb-tab tabTitle="Group Info">
     <nb-card>

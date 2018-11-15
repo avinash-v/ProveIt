@@ -14,15 +14,16 @@ from flask import jsonify
 #DEsigned keeping in mind AJAX Otherwise we have to display all the errors
 headers ={"Content-Type": "application/json"}
 class SignUp(Resource):
-	@cross_origin()
+	@cross_origin(origins="*",supports_credentials=True)
 	def post(self):
 		if current_user.is_authenticated:
 			return jsonify({"description" : "The user is already logged in" , "url" : url_for('userbase')}),200,headers
 		json_data = request.get_json(force=True)
-		username = json_data["username"]
+		print(json_data)
+		username = json_data["fullName"]
 		email = json_data["email"]
 		password = json_data["password"]
-		password2 = json_data["password2"]
+		password2 = json_data["confirmPassword"]
 		if username is None :
 			return jsonify({"description" : "The username is empty"}),200,headers
 		user = User.query.filter_by(username=username).first()
