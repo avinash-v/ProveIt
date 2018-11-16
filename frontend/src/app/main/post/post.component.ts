@@ -18,15 +18,33 @@ export class PostComponent implements OnInit {
     heading: "head",
     body: "body"
   };
+  afuConfig = {
+    multiple : false,
+    formatsAllowed : ".jpeg,.pdf,.png",
+    uploadAPI:{
+      url : "http://127.0.0.1:5555/upload",
+      headers:{
+      "Content-Type" : "application/json",
+      },
+  },
+       theme : "dragNDrop"
+
+  };
   postLoadincomplete: boolean;
   posts: Object;
+  public inputPost : string;
+
+  
   constructor(private getpost: GetPostService, private ref: ChangeDetectorRef,
   private sidebar: NbSidebarService, private route: ActivatedRoute) {}
-  getPostsForUser(id): void {
+  getPostsForUser(): void {
+    console.log("--------------")
     this.postLoadincomplete = true;
-    this.getpost.getPosts(id)
+    this.getpost.getPosts()
     .subscribe(
-      data => { this.posts = data; },
+      data => { this.posts = data;
+      console.log(data);
+      },
       err => { 
         this.postLoadincomplete = false;
         console.error(err); },
@@ -36,12 +54,37 @@ export class PostComponent implements OnInit {
     );
   }
 
+  makePost(): void{
+    console.log("--------------")
+      this.postLoadincomplete = true;
+    console.log(this.inputPost)
+
+
+    this.getpost.makePosts(this.inputPost)
+
+    .subscribe(
+      data => { 
+        this.posts = data;
+      console.log(data);
+      },
+      err => { 
+        this.postLoadincomplete = false;
+        console.error(err); },
+      () => { 
+        this.postLoadincomplete = false;
+        this.ref.markForCheck(); }
+    );
+
+
+
+  }
+
   ngOnInit() {
     this.sidebar.expand();
     //this.getPostsForUser();
     console.log("started");
     const id = +this.route.snapshot.paramMap.get('id');
-    this.getPostsForUser(id);
+    this.getPostsForUser();
     //console.log(this.posts);
   }
 }

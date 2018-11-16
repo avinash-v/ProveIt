@@ -20,7 +20,13 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
 import { MakeProjectComponent } from './make-project/make-project.component';
 import { MakeGroupComponent } from './make-group/make-group.component';
 import { GroupsComponent } from './groups/groups.component';
+<<<<<<< HEAD
 import { RecommendationComponent } from './recommendation/recommendation.component';
+=======
+import { GetImageService } from './get-image.service';
+import {FormsModule} from '@angular/forms';
+
+>>>>>>> 7015f6301b4ecebbdea4a7966b2bee41750aa6b0
 
 @NgModule({
   imports: [
@@ -42,8 +48,14 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
     AngularFileUploaderModule,
     NbSpinnerModule,
     NbListModule,
+    FormsModule
   ],
+<<<<<<< HEAD
   providers: [ NbSidebarService, NbMenuService, GetPostService ],
   declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent, MakeProjectComponent, MakeGroupComponent, GroupsComponent, RecommendationComponent]
+=======
+  providers: [ NbSidebarService, NbMenuService, GetPostService , GetImageService],
+  declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent, MakeProjectComponent, MakeGroupComponent, GroupsComponent]
+>>>>>>> 7015f6301b4ecebbdea4a7966b2bee41750aa6b0
 })
 export class MainModule { }
