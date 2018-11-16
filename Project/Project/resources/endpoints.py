@@ -20,6 +20,8 @@ api.add_resource(UserProfiles,"/profile/<username>",endpoint="getprofile")
 api.add_resource(UserProfiles,"/profile",endpoint="addProfile")
 api.add_resource(UserProfiles,"/profile/update",endpoint="updateProfile")
 api.add_resource(UserProfiles,"/profile/delete",endpoint="deleteProfile")
+api.add_resource(UserProfiles,"/profile/recommend",endpoint="recommendationSystem")
+
 
 api.add_resource(ProjectBase,'/projects/<string:project_name>',endpoint="ProjectGroupBase") #[GET]- gets project details using projectName, [PUT] - Update Project with the given ProjectName, [POST] -Creates new Project under user
 api.add_resource(UserProjects,'/user/<string:user_name>/projects/',endpoint="UserProjects") #[GET] - gets all groups of given user, 

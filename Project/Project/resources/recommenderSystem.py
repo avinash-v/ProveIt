@@ -18,7 +18,7 @@ class RecommenderSystem(Resource):
 		u = UserProfile.query.filter_by(id=u.id).first()
 		bio = u.bio
 		interests = u.interests
-		if( bio = None and interests = None ):
+		if( len(bio) == 0 and len(interests) == 0 ):
 			return jsonify({"description" : "The interests and the bio field is empty, please enter them before requesting for a recomendation"}),200,headers
 		# assume that the list of projects as of now are stored in an array - projarray, we should extract this from database, for now we will assume a hardcoded array
 		proj_array=["machine learning robot","share market analytics","cognitive science", "blockchain transacations"]
@@ -31,18 +31,8 @@ class RecommenderSystem(Resource):
 
 		# for extracting keywords from bio, we have to parse the text 
 		# rake algorithm is being used
-
-		from __future__ import absolute_import
-		from __future__ import print_function
-		import six
-		__author__ = 'a_medelyan'
-
 		import rake
-		import operator
-		import io
-
-		
-		stoppath = "data/stoplists/SmartStoplist.txt"
+		stoppath = "SmartStoplist.txt"
 		# 1. initialize RAKE by providing a path to a stopwords file
 		rake_object = rake.Rake(stoppath, 3, 1, 1) #keywords should be of length atleast 3, phrases should be of length 1 word because we're more interested in words, and minimum frequency
 													#for it to be classified should be 1 itself after removing the stopwords.
@@ -56,8 +46,8 @@ class RecommenderSystem(Resource):
 		for i in range(len(keywords)):
 			bio_keywords.append(keywords[i][0]) #form another list having only the keywords without the accuracies
 
-		total_keywords_extracted_from_bio_and_interests = bio_keywords + interests_keywords #form a list having concatenation of keywords extracted from interests and bio
-
+		total_keywords_extracted_from_bio_and_interests_with_duplicates = bio_keywords + interests_keywords #form a list having concatenation of keywords extracted from interests and bio
+		total_keywords_extracted_from_bio_and_interests = list(set(total_keywords_extracted_from_bio_and_interests_with_duplicates)) #removes duplicates
 
 		proj_to_be_returned =[]
 		for i in proj_array:
@@ -69,5 +59,6 @@ class RecommenderSystem(Resource):
 		proj_to_be_returned1 = json.dumps(proj_to_be_returned)
 
 		return jsonify({ 'Projects recommended' : proj_to_be_returned1}),200,headers
+
 
 
