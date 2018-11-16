@@ -30,15 +30,16 @@ public membersValue;
       this.sidebar.expand();  }
 
 
-public save():void{
+  public save():void{
 
   
-}
+  }
 
-public cancel():void{
+  public cancel():void{
 this.grpValue=""
 this.topicValue=""
 this.domainValue=[]
 this.abstractValue=""
 this.membersValue=[]
+  }
 }

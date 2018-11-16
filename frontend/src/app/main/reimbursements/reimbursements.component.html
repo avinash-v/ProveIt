@@ -1,0 +1,51 @@
+<nb-card>
+  <nb-card-body>
+  <nb-tabset>
+
+    <nb-tab tabTitle="All Reimbursements">
+      <nb-list>
+        <nb-list-item>
+              <div class="flex-container">
+                <div class="flex-item">ID</div>
+                <div class="flex-item">Purpose</div>
+                <div class="flex-item">Amount</div>
+                <div class="flex-item">Status</div>
+              </div>
+        </nb-list-item>
+        <nb-list-item *ngFor="let item of reimbursements">
+            <div class="flex-container">
+                  <div class="flex-item">{{item.id}}</div>
+                  <div class="flex-item">{{item.purpose}}</div>
+                  <div class="flex-item">{{item.amount}}</div>
+                  <div class="flex-item">{{item.status}}</div>
+            </div>
+        </nb-list-item>
+        <nb-list-item *ngIf="reimbursements.length==0">
+          No reimbursements to show.
+        </nb-list-item>  
+      </nb-list>
+
+    </nb-tab>
+    <nb-tab tabTitle="Make a new Reimbursement">
+      <nb-card>
+        <nb-card-body>
+          <div class="flex-container-extra">
+          <div class="flex-item-extra">
+          Add a new reimbursement Request
+          <br>
+          <br>
+          <textarea [(ngModel)]="purpose" nbInput placeholder="Purpose"></textarea>
+          <br>
+          <br>
+          <input [(ngModel)]="amount" nbInput type="number" placeholder="Amount">
+          <br>
+          <br>
+          <button nbButton (click)="validate(true)">Add</button>
+        </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+      </nb-tab>
+  </nb-tabset>
+</nb-card-body>
+</nb-card>

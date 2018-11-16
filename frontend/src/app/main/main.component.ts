@@ -49,7 +49,7 @@ export class MainComponent implements OnInit {
     },
     {
       title: 'Reimbursements',
-      link: [],
+      link: '/reimbursements',
     },
   ]; //item menu update this
   constructor(private menuService: NbMenuService,router: Router,private authservice : NbAuthService) {
