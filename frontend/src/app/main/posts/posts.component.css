@@ -48,20 +48,36 @@
 .basicImg:hover .basicImgEdit {
   opacity: 1;
 }
-.basicField{
+.basicField1{
   margin-left: 1vh;
   float: left;
   font-family: sans-serif;
   font-weight: bold;
+  padding: 1vh;
+}
+.basicField{
+  margin-left: 1vh;
+  font-family: sans-serif;
+  font-weight: bold;
+  float: left;
+  padding: 1vh;
 }
 .edit_save{
   float: left;
   padding-top: 3.5vh;
+  margin-bottom: 3.5vh;
+  margin-left: 1vh;
 }
-
+.edit_cancel{
+  float: left;
+  padding-top: 3.5vh;
+  margin-bottom: 3.5vh;
+  margin-left: 2vh;
+}
 .edit{
   float: left; 
-  padding-top: 3.5vh
+  /*padding-top: 3.5vh;*/
+  margin-bottom: 3.5vh;
 }
 
 [nbButton]:hover{
@@ -71,4 +87,55 @@
 .selectList{
   font-family: sans-serif;
   font-weight: 
+}
+
+.nb-card1{
+  margin-left: 15vh; 
+  width: 30%; 
+  padding: 1vh; 
+  font-family: monospace;
+  font-weight: bold;
+  height: 4vh;
+  /*border: 1px solid rgb(138,127,255);*/
+}
+
+.nb-card2{
+  margin-left: 12vh; 
+  width: 30%; 
+  padding: 1vh; 
+  font-family: monospace;
+  font-weight: bold;
+  height: 4vh;
+  /*border: 1px solid rgb(138,127,255);*/
+}
+
+.nb-card3{
+  margin-left: 10vh; 
+  width: 30%; 
+  padding: 1vh; 
+  font-family: monospace;
+  font-weight: bold;
+  height: 4vh;
+  /*border: 1px solid rgb(138,127,255);*/
+}
+
+.personal{
+  margin-left: 5vh; 
+  width: 30%; 
+  padding: 1vh; 
+  height: 5vh;
+  /*border: 1px solid rgb(138,127,255);*/
+}
+
+.interests{
+  margin-left: 5vh; 
+  width: 60%; 
+  padding: 1vh; 
+  /*border: 1px solid rgb(138,127,255);*/
+}
+
+.bio{
+  margin-left: 5vh; 
+  width: 60%; 
+  padding: 1vh;
 }
