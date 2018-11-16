@@ -1,3 +1,49 @@
-<p>
-  make-group works!
-</p>
+<nb-card>
+<nb-card-body>
+	  <div class="basicDetails">
+      <div class="basicImg">
+        <img class="profilePicture" src="/assets/pro_def.jpg" [nbSpinner]="isImageLoading" alt="profile picture" align="left" />
+        <div class="basicImgEdit"><button nbButton>Edit</button></div>
+      </div>
+      <nb-card class="basicRight">
+          <b>Name: {{grpValue}}</b>
+      </nb-card>
+    </div>
+    <nb-tabset>
+    	 <nb-tab tabTitle="Group Details" id="grpDetails">
+    	<div style="padding-top: 1%">
+     		<input type="text" id="editButtonSkills" class="makegroup" nbInput shape="rectangle" placeholder="Basics in C" style="width: 30%"  [ngModel]="grpValue" (ngModelChange)="grpValue=$event">
+     		<div class= "basicField">Group Name</div> 
+     	</div>
+     	<div style="padding-top: 1%">
+     		<input type="text" id="topic" class="makegroup" nbInput shape="rectangle" placeholder="Basics in C" style="width: 30%; margin-left: 10vh;" [ngModel]="topicValue" (ngModelChange)="topicValue=$event">
+     		<div class= "basicField">Topic</div> 
+     	</div>
+     		<div style="padding-top: 1%">
+     		<div class="basicField">Select Domains</div>
+     		<nb-select multiple placeholder="Domains" style="width: 30%;margin-left: 16vh;" [(selected)]="domainValue">
+     			<nb-option value="CC">Cloud Computing</nb-option>
+     			<nb-option value="BD">Big Data</nb-option>
+     			<nb-option value="ML">Machine Learning</nb-option>
+     			<nb-option value="ALG">Algorithms</nb-option>
+     			<nb-option value="SEC">Security</nb-option>
+			</nb-select>
+     		</div>
+    	 	  <div style="padding-top: 1%">
+    	 	  <textarea rows="16" id="abstract" nbInput shape="rectangle" placeholder="Software Engineer. Works in Microsoft" style="width: 60%; margin-left: 8vh" [ngModel]="abstractValue" (ngModelChange)="abstractValue=$event"></textarea>
+    	 	  <div class= "basicField">Abstract</div> 
+ 	 	  </div>
+
+    	 </nb-tab>
+    	 <nb-tab tabTitle="Members" id="members">
+      		<nb-select multiple placeholder="Members" style="width: 30%;margin-left: 16vh;" [(selected)]="membersValue">
+     			<nb-option *ngFor="let user of users" value={{user.name}}><nb-user [name]="user.name" ></nb-user></nb-option>
+			</nb-select>
+		<div id="saveGrpPadding" style="padding-right: 	5%"class="edit_save"><a id="saveButtonData" (click)="save()" nbButton>Save</a></div>
+        <div class="edit_save"><a id="cancelButtonData" (click)="cancel()" nbButton>Cancel</a></div>
+
+    	 </nb-tab>
+
+    </nb-tabset>
+</nb-card-body>
+</nb-card>
