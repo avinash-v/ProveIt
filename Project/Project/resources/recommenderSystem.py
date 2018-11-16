@@ -9,6 +9,7 @@ from Project.models import UserProfile
 from Project.models import Student
 from flask_cors import CORS,cross_origin
 from flask import jsonify
+from Project.models import Group
 headers ={"Content-Type": "application/json"}
 class RecommenderSystem(Resource):
 	decorators= [login_required]
@@ -20,8 +21,12 @@ class RecommenderSystem(Resource):
 		interests = u.interests
 		if( len(bio) == 0 and len(interests) == 0 ):
 			return jsonify({"description" : "The interests and the bio field is empty, please enter them before requesting for a recomendation"}),200,headers
+		proj_array =[]
+		g = Group.query.all()
+		for i in g:
+			proj_array.append(i.name)
 		# assume that the list of projects as of now are stored in an array - projarray, we should extract this from database, for now we will assume a hardcoded array
-		proj_array=["machine learning robot","share market analytics","cognitive science", "blockchain transacations"]
+		#proj_array=["machine learning robot","share market analytics","cognitive science", "blockchain transacations"]
 
 		# assumptions - interests are comma seperated words, and bio is a string
 
