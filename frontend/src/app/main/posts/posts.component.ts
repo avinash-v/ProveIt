@@ -33,6 +33,7 @@ export class PostsComponent implements OnInit {
   public editBioValue: string;
   public editSkillsValue: string;
   public editUNameValue: string;
+    public editUNameValue1: string;
   public flag: number=1;
   public tempBio;
   public tempUName;
@@ -54,6 +55,7 @@ export class PostsComponent implements OnInit {
   posts: any;
 
   ngOnInit() {
+  	this.getProfile();
     this.sidebar.expand();
     this.getImageFromService();
   }
@@ -63,8 +65,34 @@ export class PostsComponent implements OnInit {
 
     this.rest.postData("http://127.0.0.1:5555/profile",profileData).subscribe((data : {}) => {
       console.log(data);
+
+
     });
   }
+  
+  
+    public getProfile():void{
+  var userId = localStorage.getItem("userId");
+  this.rest.getData("http://127.0.0.1:5555/profile/" + userId).subscribe((data : {}) =>{
+  console.log(data);
+  		if(data.hasOwnProperty("username"))
+  		{
+  		console.log("hey");
+  		console.log(data.username);
+      	this.editUNameValue = data.username;
+      	  		console.log(this.editUNameValue);
+      	this.editFNameValue = data.firstName;
+      	this.editLNameValue = data.lastName;
+      	this.editContactValue = data.contact;
+      	this.editUserTypeValue= data.userType;
+      	this.editSkillsValue = data.skills;
+      	this.editBioValue = data.bio;
+      	}
+
+  });
+}
+
+
 
   createImageFromBlob(image: Blob) {
     let reader = new FileReader();
@@ -110,6 +138,7 @@ export class PostsComponent implements OnInit {
         //var savePadding = <HTMLInputElement>document.getElementById('saveBioPadding');
         //savePadding.style.paddingRight="0%";
     	this.flag = 1;
+    	this.postProfile();
 
   }
   public cancelBio():void{
