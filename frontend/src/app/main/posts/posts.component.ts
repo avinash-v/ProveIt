@@ -69,27 +69,34 @@ export class PostsComponent implements OnInit {
 
     });
   }
+  data: any;
   
-  
-    public getProfile():void{
+  public getProfile():void{
   var userId = localStorage.getItem("userId");
-  this.rest.getData("http://127.0.0.1:5555/profile/" + userId).subscribe((data : {}) =>{
-  console.log(data);
-  		if(data.hasOwnProperty("username"))
+  this.rest.getData("http://127.0.0.1:5555/profile/" + userId)
+  .subscribe(
+    dataIn => { this.data = dataIn; 
+    },
+    err => { 
+      console.error(err); 
+    },
+    () => { 
+      if(this.data.hasOwnProperty("username"))
   		{
-  		console.log("hey");
-  		console.log(data.username);
-      	this.editUNameValue = data.username;
+  		  console.log("hey");
+  		  console.log(this.data.username);
+      	this.editUNameValue = this.data.username;
       	  		console.log(this.editUNameValue);
-      	this.editFNameValue = data.firstName;
-      	this.editLNameValue = data.lastName;
-      	this.editContactValue = data.contact;
-      	this.editUserTypeValue= data.userType;
-      	this.editSkillsValue = data.skills;
-      	this.editBioValue = data.bio;
-      	}
-
-  });
+      	this.editFNameValue = this.data.firstName;
+      	this.editLNameValue = this.data.lastName;
+      	this.editContactValue = this.data.contact;
+      	this.editUserTypeValue= this.data.userType;
+      	this.editSkillsValue = this.data.skills;
+      	this.editBioValue = this.data.bio;
+      }
+      this.ref.markForCheck(); 
+    }
+  );
 }
 
 
