@@ -9,6 +9,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { MakeGroupComponent } from './make-group/make-group.component';
 import { MakeProjectComponent } from './make-project/make-project.component';
 import { GroupsComponent } from './groups/groups.component';
+import {RecommendationComponent} from './recommendation/recommendation.component';
+import { ReimbursementsComponent } from './reimbursements/reimbursements.component';
 
 const routes: Routes = [
   {
@@ -46,6 +48,15 @@ const routes: Routes = [
         path : 'groups',
         component : GroupsComponent
       },
+     
+     {
+        path : 'recommendation',
+        component : RecommendationComponent
+      },
+      {
+        path : 'reimbursements',
+        component: ReimbursementsComponent
+      }
     ]
   }
 ];

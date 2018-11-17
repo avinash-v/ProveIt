@@ -6,7 +6,7 @@ import { MainRoutingModule } from './main-routing.module';
 
 // tslint:disable-next-line:max-line-length
 
-import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule, NbSpinnerModule, NbSelectModule} from '@nebular/theme';
+import { NbLayoutModule, NbSidebarModule, NbSidebarService, NbActionsModule, NbUserModule, NbCardModule, NbContextMenuModule, NbMenuService, NbMenuModule, NbTabsetModule, NbRouteTabsetModule, NbButtonModule, NbInputModule, NbAccordionModule, NbListModule, NbSpinnerModule, NbSelectModule, NbToastrModule} from '@nebular/theme';
 
 import { PostsComponent } from './posts/posts.component';
 import { MainComponent } from './main.component';
@@ -20,9 +20,21 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
 import { MakeProjectComponent } from './make-project/make-project.component';
 import { MakeGroupComponent } from './make-group/make-group.component';
 import { GroupsComponent } from './groups/groups.component';
-import { GetImageService } from './get-image.service';
-import {FormsModule} from '@angular/forms';
+<<<<<<< HEAD
+import { RecommendationComponent } from './recommendation/recommendation.component';
+import { ReimbursementsComponent } from './reimbursements/reimbursements.component';
+=======
 
+import { RecommendationComponent } from './recommendation/recommendation.component';
+
+>>>>>>> 7ba92c319c30fd574750aaebe9a9b295a8c84cce
+import { GetImageService } from './get-image.service';
+import { FormsModule } from '@angular/forms';
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7ba92c319c30fd574750aaebe9a9b295a8c84cce
 
 @NgModule({
   imports: [
@@ -44,9 +56,15 @@ import {FormsModule} from '@angular/forms';
     AngularFileUploaderModule,
     NbSpinnerModule,
     NbListModule,
-    FormsModule
+    FormsModule,
+    NbToastrModule.forRoot()
   ],
   providers: [ NbSidebarService, NbMenuService, GetPostService , GetImageService],
-  declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent, MakeProjectComponent, MakeGroupComponent, GroupsComponent]
+<<<<<<< HEAD
+  declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent, MakeProjectComponent, ReimbursementsComponent, RecommendationComponent,MakeGroupComponent, GroupsComponent]
+=======
+  declarations: [ MainComponent , PostsComponent, PostComponent, HomeComponent, AboutusComponent, MakeProjectComponent, MakeGroupComponent, GroupsComponent , RecommendationComponent]
+
+>>>>>>> 7ba92c319c30fd574750aaebe9a9b295a8c84cce
 })
 export class MainModule { }

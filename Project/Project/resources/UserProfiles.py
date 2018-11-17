@@ -5,38 +5,40 @@ from Project.views import userbase,extra,home
 from flask import url_for,request
 from Project.models import User
 from werkzeug.urls import url_parse
-from Project.models import UserProfile
+from Project.models import UserProfile,load_user
 from Project.models import Student
 from flask_cors import CORS,cross_origin
 from flask import jsonify
 headers ={"Content-Type": "application/json"}
 class UserProfiles(Resource):
-	decorators= [login_required]
-	@cross_origin()
-	def get(self,username):
-		if username is None:
+	#decorators= [login_required]
+	@cross_origin(origins="*",supports_credentials=True)
+	def get(self,userId):
+		if userId is None:
 			return jsonify({"description" : "The username is NULL"}),200,headers
-
-		u = User.query.filter_by(username=username).first()
+		current_user = load_user(userId)
+		u = User.query.filter_by(username=current_user.username).first()
+		print(u)
 		u = UserProfile.query.filter_by(id=u.id).first()
 		if u is None:
 			return jsonify({"description" : "The username does not exist.Please enter a valid username"}),200,headers
 
 		if u.userType == "student":
-			return jsonify({"description":"The user profile is:","usn":u.collegeId,"first name":u.firstName,"last Name":u.lastName,"contact":u.contact,"bio":u.bio,"interests":u.interests,"cgpa":u.cgpa}),200,headers
+			return jsonify({"description":"The user profile is:","usn":u.collegeId,"username" : current_user.username,"firstName":u.firstName,"lastName":u.lastName,"userType" : u.userType,"contact":u.contact,"bio":u.bio,"interests":u.interests,"cgpa":u.cgpa , "skills":u.skills}),200,headers
 		if u.userType == "collegeRepresentative":
-			return jsonify({"description":"The user profile is:","usn":u.collegeId,"first name":u.firstName,"last Name":u.lastName,"contact":u.contact,"bio":u.bio,"interests":u.interests,"designation":u.designation}),200,headers
+			return jsonify({"description":"The user profile is:","usn":u.collegeId,"username" : current_user.username,"firstName":u.firstName,"lastName":u.lastName,"userType": u.userType,"contact":u.contact,"bio":u.bio,"interests":u.interests,"designation":u.designation}),200,headers
 		if u.userType == "faculty":
-			return jsonify({"description":"The user profile is:","usn":u.collegeId,"first name":u.firstName,"last Name":u.lastName,"contact":u.contact,"bio":u.bio,"interests":u.interests,"research body":u.researchBody}),200,headers
+			return jsonify({"description":"The user profile is:","usn":u.collegeId,"username": current_user.username,"firstName":u.firstName,"lastName":u.lastName,"userType":u.userType,"contact":u.contact,"bio":u.bio,"interests":u.interests,"research body":u.researchBody}),200,headers
 
-	@cross_origin()
+	@cross_origin(origins="*",supports_credentials=True)
 	def post(self):
 		json_data = request.get_json(force=True)
 		try:
-			username = json_data["username"]
+			userId = json_data["userId"]
 		except:
-			username = None
-		u = User.query.filter_by(username=username).first()
+			userId = None
+		current_user = load_user(userId)
+		u = User.query.filter_by(username=current_user.username).first()
 		Id = current_user.id
 		if u.id != Id:
 			return jsonify({"description:'You cannot add someone elses profile'"}),200,headers
@@ -72,8 +74,13 @@ class UserProfiles(Resource):
 			userType = json_data["userType"]
 		except:
 			userType = None
+			
+		try:
+			skills = json_data["skills"]
+		except:
+			skills = None
 
-		student = UserProfile(id=Id,collegeId=collegeId,firstName=firstName,lastName=lastName,contact=contact,bio=bio,interests=interests,userType=userType)
+		student = UserProfile(id=Id,collegeId=collegeId,firstName=firstName,lastName=lastName,contact=contact,bio=bio,interests=interests,userType=userType,skills=skills)
 
 		db.session.add(student)
 		db.session.commit()
@@ -129,6 +136,7 @@ class UserProfiles(Resource):
 		u.contact = contact
 		u.bio = bio
 		u.interests = interests
+		u.skills=skills
 		db.session.commit()
 		return jsonify({"description" : "The profile has been updated successfully"}),200,headers
 #Working partially need to handle a few cases.
